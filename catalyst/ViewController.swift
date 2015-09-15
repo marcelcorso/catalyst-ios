@@ -1,9 +1,9 @@
 //
 //  ViewController.swift
-//  catalyst
+//  Catalyst
 //
-//  Created by Vincent Onderwaater on 15-09-15.
-//  Copyright © 2015 Yolo Amazeballs Interwebs. All rights reserved.
+//  Created by Corné Driesprong on 15/09/15.
+//  Copyright (c) 2015 YoloAmazeballzInterwebs. All rights reserved.
 //
 
 import UIKit
