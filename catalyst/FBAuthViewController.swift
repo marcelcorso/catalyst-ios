@@ -53,11 +53,13 @@ class FBAuthViewController: UIViewController, FBSDKLoginButtonDelegate {
                         ref.setValue(userDict)
                         
                         NSUserDefaults.standardUserDefaults().setObject(id, forKey: "id")
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                        
                     }
                 }
             }
             
-            self.navigationController?.pushViewController(UserAuthViewController(nibName: "UserAuthViewController", bundle: nil), animated: true)
+            
         }
     }
     

@@ -8,6 +8,7 @@
 
 import UIKit
 import FBSDKLoginKit
+import Firebase
 
 class HomeScreenViewController: UIViewController {
     
@@ -21,22 +22,37 @@ class HomeScreenViewController: UIViewController {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         checkUserAuth()
         
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         navigationItem.title = "Catalyst"
     }
-  
+    
     func checkUserAuth() {
         if FBSDKAccessToken.currentAccessToken() == nil {
             let fbAuthViewController = FBAuthViewController(nibName: "FBAuthViewController", bundle: nil)
             presentViewController(fbAuthViewController, animated: false, completion: nil)
         } else if userId == nil {
-//            let userAuthViewController = UserAuthViewController(nibName: "UserAuthViewController", bundle: nil)
-//            presentViewController(userAuthViewController, animated: false, completion: nil)
+
+            let userAuthViewController = UserAuthViewController(nibName: "UserAuthViewController", bundle: nil)
+            presentViewController(userAuthViewController, animated: false, completion: nil)
+        } else {
+        
+            var channelNumber = 1
+            
+            let ref = Firebase(url:"https://catalysttv.firebaseio.com/users")
+            
+            var queryRef = ref.queryOrderedByChild("viewing_channel").queryEndingAtValue(channelNumber)!.queryStartingAtValue(channelNumber)
+            
+            queryRef.observeEventType(.ChildAdded, withBlock: { (snapshot: FDataSnapshot!) in
+
+                println(snapshot.key)
+                
+            })
+        
         }
     }
 }

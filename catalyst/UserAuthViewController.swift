@@ -14,8 +14,9 @@ class UserAuthViewController: UIViewController {
     
     @IBOutlet weak var codeEntryTextField: UITextField!
     
+    @IBOutlet weak var connectButton: UIButton!
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        super.init(nibName: "ViewController", bundle: nil)
+        super.init(nibName: nibNameOrNil, bundle: nil)
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -30,11 +31,31 @@ class UserAuthViewController: UIViewController {
 
     @IBAction func connectButtonTapped(sender: AnyObject) {
         let id = NSUserDefaults.standardUserDefaults().objectForKey("id") as! String
-        let entry = codeEntryTextField.text as NSString
         
-        if entry.length > 0 {
+        
+        if let associatedCode = codeEntryTextField.text as? String where count(associatedCode) > 0 {
             let ref = Firebase(url:firebaseURL + "/code2userid/" + self.codeEntryTextField.text)
-            ref.setValue(id)
+            ref.setValue(id, withCompletionBlock: { (error: NSError!, firebase: Firebase!) -> Void in
+                
+                if error == nil {
+                userId = id
+                self.dismissViewControllerAnimated(true, completion: nil)
+                } else {
+                
+                    self.connectButton.setTitleColor(UIColor.redColor(), forState: UIControlState.Normal)
+                    self.connectButton.setTitle("ERROR! Try again", forState: .Normal)
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
+                        self.connectButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+                        self.connectButton.setTitle("Connect", forState: .Normal)
+                    })
+                }
+                
+                
+            })
+            
+        } else {
+        
+            print("CAN'T SET AN EMPTY CODE!")
         }
         
         // TODO: check if entry dissapears
