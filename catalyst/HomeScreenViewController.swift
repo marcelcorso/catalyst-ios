@@ -21,18 +21,11 @@ class HomeScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        
-        super.viewDidAppear(animated)
-        
         checkUserAuth()
+        
+        
     }
-    
+  
     func checkUserAuth() {
     
         if FBSDKAccessToken.currentAccessToken() == nil {
