@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeScreenViewController" customModule="Catalyst" customModuleProvider="target">
             <connections>
+                <outlet property="tableView" destination="g9h-cW-evX" id="5ZQ-jQ-7xz"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -13,7 +14,23 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="g9h-cW-evX">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="B89-aW-iuX"/>
+                        <outlet property="delegate" destination="-1" id="6FW-fc-SNm"/>
+                    </connections>
+                </tableView>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="g9h-cW-evX" secondAttribute="trailing" id="UgM-C3-W9k"/>
+                <constraint firstItem="g9h-cW-evX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="eet-bN-8AF"/>
+                <constraint firstItem="g9h-cW-evX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="q6M-vz-XBc"/>
+                <constraint firstAttribute="bottom" secondItem="g9h-cW-evX" secondAttribute="bottom" id="uhz-f4-jGF"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
         </view>
     </objects>
