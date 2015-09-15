@@ -6,3 +6,4 @@ use_frameworks!
 
 pod 'Firebase'
 pod 'FBSDKLoginKit'
+pod 'SwiftyJSON'

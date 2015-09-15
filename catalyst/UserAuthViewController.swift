@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FBSDKLoginKit
 
 class UserAuthViewController: UIViewController {
     
@@ -23,28 +24,15 @@ class UserAuthViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        edgesForExtendedLayout = UIRectEdge.None
     }
 
 
     @IBAction func connectButtonTapped(sender: AnyObject) {
-        let ref = Firebase(url:firebaseURL + "/code2userid/")
-        
-        ref.queryOrderedByChild("aaaa").observeEventType(.ChildAdded, withBlock: { data in
-            if let code = data.value.description, entry = self.codeEntryTextField.text {
-                if code != entry {
-                    println("wrong code!")
-                    var alert = UIAlertController(title: "Error", message: "Invalid code!", preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
-                    self.presentViewController(alert, animated: true, completion: nil)
-                } else {
-                    println("correct code!")
-                    // proceed to main view
-                }
-            }
-        })
-        
-        let code = codeEntryTextField.text
+        let id = NSUserDefaults.standardUserDefaults().objectForKey("id") as! String
+        let ref = Firebase(url:firebaseURL + "/code2userid/" + self.codeEntryTextField.text)
+        ref.setValue(id)
     }
 }
 

@@ -29,14 +29,9 @@ class HomeScreenViewController: UIViewController {
     func checkUserAuth() {
     
         if FBSDKAccessToken.currentAccessToken() == nil {
-            
-            presentViewController(UINavigationController(rootViewController: FBAuthViewController(nibName: "FBAuthViewController", bundle: nil)), animated: true, completion: { () -> Void in
-                
-            })
-        
-            
+            presentViewController(UINavigationController(rootViewController: FBAuthViewController(nibName: "FBAuthViewController", bundle: nil)), animated: true, completion:nil)
+        } else if userId == nil {
+            presentViewController(UINavigationController(rootViewController: UserAuthViewController (nibName: "UserAuthViewController", bundle: nil)), animated: true, completion:nil)
         }
-        
-    
     }
 }
