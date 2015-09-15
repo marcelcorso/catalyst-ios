@@ -20,8 +20,11 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VWg-dP-due">
                                 <rect key="frame" x="0.0" y="0.0" width="314" height="296"/>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradient" translatesAutoresizingMaskIntoConstraints="NO" id="LVJ-Ee-ZSn" userLabel="gradient">
+                                <rect key="frame" x="-0.5" y="0.0" width="314" height="296"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EpZ-dV-vgM">
-                                <rect key="frame" x="262" y="265.5" width="42" height="20.5"/>
+                                <rect key="frame" x="262" y="265" width="42" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -47,10 +50,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="VWg-dP-due" firstAttribute="width" secondItem="LVJ-Ee-ZSn" secondAttribute="width" id="4De-Xx-zoO"/>
                             <constraint firstAttribute="bottom" secondItem="VWg-dP-due" secondAttribute="bottom" constant="50" id="AvU-QP-yhD"/>
+                            <constraint firstItem="VWg-dP-due" firstAttribute="height" secondItem="LVJ-Ee-ZSn" secondAttribute="height" id="BdX-xC-VmR"/>
                             <constraint firstItem="VWg-dP-due" firstAttribute="bottom" secondItem="EpZ-dV-vgM" secondAttribute="bottom" constant="10" id="Dxj-B7-5dh"/>
                             <constraint firstAttribute="trailing" secondItem="LMe-1v-uIM" secondAttribute="trailing" id="GAB-BH-7fn"/>
                             <constraint firstItem="VWg-dP-due" firstAttribute="trailing" secondItem="EpZ-dV-vgM" secondAttribute="trailing" constant="10" id="Gsb-ox-DXR"/>
+                            <constraint firstItem="VWg-dP-due" firstAttribute="centerX" secondItem="LVJ-Ee-ZSn" secondAttribute="centerX" id="HXZ-bI-7s2"/>
                             <constraint firstAttribute="bottom" secondItem="LMe-1v-uIM" secondAttribute="bottom" id="OYM-HE-b8X"/>
                             <constraint firstItem="LMe-1v-uIM" firstAttribute="leading" secondItem="rkL-Sv-n3X" secondAttribute="trailing" id="Pkf-Ag-eN4"/>
                             <constraint firstAttribute="bottom" secondItem="rkL-Sv-n3X" secondAttribute="bottom" id="TSR-ZN-2r2"/>
@@ -60,6 +66,7 @@
                             <constraint firstItem="rkL-Sv-n3X" firstAttribute="leading" secondItem="89e-bM-vwQ" secondAttribute="leading" id="nWF-gN-P4d"/>
                             <constraint firstItem="rkL-Sv-n3X" firstAttribute="top" secondItem="VWg-dP-due" secondAttribute="bottom" id="poP-G0-bx4"/>
                             <constraint firstItem="LMe-1v-uIM" firstAttribute="top" secondItem="VWg-dP-due" secondAttribute="bottom" id="xHl-pr-5fg"/>
+                            <constraint firstItem="VWg-dP-due" firstAttribute="centerY" secondItem="LVJ-Ee-ZSn" secondAttribute="centerY" id="xXA-kV-mci"/>
                             <constraint firstItem="VWg-dP-due" firstAttribute="leading" secondItem="89e-bM-vwQ" secondAttribute="leading" id="xpN-eh-2n1"/>
                         </constraints>
                     </view>
@@ -84,4 +91,7 @@
             <point key="canvasLocation" x="408" y="183"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="gradient" width="8" height="256"/>
+    </resources>
 </document>
