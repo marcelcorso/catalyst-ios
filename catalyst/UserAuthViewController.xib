@@ -4,9 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController" customModule="Catalyst" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserAuthViewController" customModule="Catalyst" customModuleProvider="target">
             <connections>
                 <outlet property="codeEntryTextField" destination="i1P-FS-zKZ" id="Rfy-Ou-cLf"/>
+                <outlet property="connectButton" destination="LLn-1d-pPx" id="BC9-5m-Ep0"/>
                 <outlet property="view" destination="iN0-l3-epB" id="IL0-bJ-Vjf"/>
             </connections>
         </placeholder>

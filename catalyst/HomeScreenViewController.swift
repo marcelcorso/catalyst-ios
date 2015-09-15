@@ -8,13 +8,14 @@
 
 import UIKit
 import FBSDKLoginKit
+import Firebase
 
 class HomeScreenViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tvShowLabel: UILabel!
     
-    var people: [AnyObject]?
+    var people = [String : [String : AnyObject]]()
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -26,20 +27,43 @@ class HomeScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        checkUserAuth()
         
-        tableView.registerNib(HomeScreenTableViewCell(), forCellReuseIdentifier: "cell")
+        tableView.registerNib(UINib(nibName: "HomeScreenTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         
         navigationItem.title = "Catalyst"
     }
-  
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        checkUserAuth()
+    }
+    
     func checkUserAuth() {
         if FBSDKAccessToken.currentAccessToken() == nil {
             let fbAuthViewController = FBAuthViewController(nibName: "FBAuthViewController", bundle: nil)
             presentViewController(fbAuthViewController, animated: false, completion: nil)
         } else if userId == nil {
-//            let userAuthViewController = UserAuthViewController(nibName: "UserAuthViewController", bundle: nil)
-//            presentViewController(userAuthViewController, animated: false, completion: nil)
+
+            let userAuthViewController = UserAuthViewController(nibName: "UserAuthViewController", bundle: nil)
+            presentViewController(userAuthViewController, animated: false, completion: nil)
+        } else {
+        
+            var channelNumber = 1
+            
+            let ref = Firebase(url:"https://catalysttv.firebaseio.com/users")
+            
+            var queryRef = ref.queryOrderedByChild("viewing_channel").queryEndingAtValue(channelNumber)!.queryStartingAtValue(channelNumber)
+            
+            queryRef.observeEventType(.ChildAdded, withBlock: { (snapshot: FDataSnapshot!) in
+
+                if let person = snapshot.value as? [String: AnyObject] {
+                self.people[snapshot.key] = person
+                }
+                self.tableView.reloadData()
+                
+            })
+            
+            
         }
     }
 }
@@ -47,12 +71,16 @@ class HomeScreenViewController: UIViewController {
 extension HomeScreenViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        
+        let b = people.count
+        return people.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as!HomeScreenTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! HomeScreenTableViewCell
+        
+        
         
         return cell
     }
@@ -66,7 +94,7 @@ extension HomeScreenViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 
-        // save the 'like'
+        /*// save the 'like'
         let likedPersonId = people[indexPath.row].id
         let userId = NSUserDefaults.standardUserDefaults().objectForKey("id")
 
@@ -74,6 +102,6 @@ extension HomeScreenViewController: UITableViewDelegate {
         let postRef = ref.childByAppendingPath("likes")
         let likeDict = [dst_user_id: likedPersonId, src_user_id: userId]
         let post1Ref = postRef.childByAutoId()
-        post1Ref.setValue(likeDict)
+        post1Ref.setValue(likeDict) */
     }
 }
