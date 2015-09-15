@@ -11,7 +11,7 @@ import FBSDKLoginKit
 import Firebase
 import SDWebImage
 
-class HomeScreenViewController: UIViewController {
+class HomeScreenViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tvShowLabel: UILabel!
@@ -28,6 +28,8 @@ class HomeScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.interactivePopGestureRecognizer.delegate = self
         
         NSNotificationCenter.defaultCenter().addObserverForName(matchNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (notification: NSNotification!) -> Void in
             
@@ -49,7 +51,7 @@ class HomeScreenViewController: UIViewController {
         let settsButton = UIBarButtonItem(image: UIImage(named: "config"), style: .Plain, target: self, action: "settingsButtonTouched:")
         settsButton.tintColor = UIColor.blackColor()
         navigationItem.leftBarButtonItem = settsButton
-        let chatButton = UIBarButtonItem(image: UIImage(named: "msg"), style: .Plain, target: self, action: "messageButtonTouched:")
+        let chatButton = UIBarButtonItem(image: UIImage(named: "msg"), style: .Plain, target: self, action: "matchesButtonTouched:")
         chatButton.tintColor = UIColor.blackColor()
         navigationItem.rightBarButtonItem = chatButton
     }
@@ -58,6 +60,11 @@ class HomeScreenViewController: UIViewController {
     
         
         
+    }
+    
+    func matchesButtonTouched(sender: UIBarButtonItem) {
+    
+        self.navigationController?.pushViewController(MatchesViewController(nibName: "MatchesViewController", bundle: nil), animated: true)
     }
     
     override func viewDidAppear(animated: Bool) {
