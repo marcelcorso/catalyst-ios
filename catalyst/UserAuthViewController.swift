@@ -28,11 +28,16 @@ class UserAuthViewController: UIViewController {
         edgesForExtendedLayout = UIRectEdge.None
     }
 
-
     @IBAction func connectButtonTapped(sender: AnyObject) {
         let id = NSUserDefaults.standardUserDefaults().objectForKey("id") as! String
-        let ref = Firebase(url:firebaseURL + "/code2userid/" + self.codeEntryTextField.text)
-        ref.setValue(id)
+        let entry = codeEntryTextField.text as NSString
+        
+        if entry.length > 0 {
+            let ref = Firebase(url:firebaseURL + "/code2userid/" + self.codeEntryTextField.text)
+            ref.setValue(id)
+        }
+        
+        // TODO: check if entry dissapears
     }
 }
 

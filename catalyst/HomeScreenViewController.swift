@@ -22,16 +22,15 @@ class HomeScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         checkUserAuth()
-        
-        
     }
   
     func checkUserAuth() {
-    
         if FBSDKAccessToken.currentAccessToken() == nil {
-            presentViewController(UINavigationController(rootViewController: FBAuthViewController(nibName: "FBAuthViewController", bundle: nil)), animated: true, completion:nil)
+            let fbAuthViewController = FBAuthViewController(nibName: "FBAuthViewController", bundle: nil)
+            presentViewController(fbAuthViewController, animated: false, completion: nil)
         } else if userId == nil {
-            presentViewController(UINavigationController(rootViewController: UserAuthViewController (nibName: "UserAuthViewController", bundle: nil)), animated: true, completion:nil)
+            let userAuthViewController = UserAuthViewController(nibName: "UserAuthViewController", bundle: nil)
+            presentViewController(userAuthViewController, animated: false, completion: nil)
         }
     }
 }
