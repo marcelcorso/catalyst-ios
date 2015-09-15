@@ -14,10 +14,13 @@ import FBSDKLoginKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow? = UIWindow(frame: UIScreen.mainScreen().bounds)
+    var navigationController: UINavigationController!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        window?.rootViewController = ViewController()
+        navigationController = UINavigationController(rootViewController: HomeScreenViewController(nibName: "HomeScreenViewController", bundle: nil))
+        
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)

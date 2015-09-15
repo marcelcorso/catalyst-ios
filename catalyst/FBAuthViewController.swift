@@ -7,29 +7,41 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
-class FBAuthViewController: UIViewController {
+class FBAuthViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
-    */
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+
+    @IBAction func dismissButtonTouched(sender: AnyObject) {
+        
+        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        
+        if result.token != nil {
+            self.navigationController?.pushViewController(UserAuthViewController(nibName: "UserAuthViewController", bundle: nil), animated: true)
+        }
+    }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func loginButtonWillLogin(loginButton: FBSDKLoginButton!) -> Bool {
+        
+        return true
+    }
 
 }

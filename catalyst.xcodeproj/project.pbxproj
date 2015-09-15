@@ -15,6 +15,10 @@
 		412E62501BA825D400346E01 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 412E624F1BA825D400346E01 /* Images.xcassets */; };
 		412E62531BA825D400346E01 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 412E62511BA825D400346E01 /* LaunchScreen.xib */; };
 		412E625F1BA825D400346E01 /* CatalystTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412E625E1BA825D400346E01 /* CatalystTests.swift */; };
+		E5A9D94F1BA837EB002482F1 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A9D94D1BA837EB002482F1 /* HomeScreenViewController.swift */; };
+		E5A9D9501BA837EB002482F1 /* HomeScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5A9D94E1BA837EB002482F1 /* HomeScreenViewController.xib */; };
+		E5A9D9531BA838E1002482F1 /* FBAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A9D9511BA838E1002482F1 /* FBAuthViewController.swift */; };
+		E5A9D9541BA838E1002482F1 /* FBAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5A9D9521BA838E1002482F1 /* FBAuthViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +46,10 @@
 		412E625E1BA825D400346E01 /* CatalystTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalystTests.swift; sourceTree = "<group>"; };
 		66774280AE5D357E5549122F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4D016E67EB8181C41EB6B20 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		E5A9D94D1BA837EB002482F1 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeScreenViewController.swift; path = catalyst/HomeScreenViewController.swift; sourceTree = SOURCE_ROOT; };
+		E5A9D94E1BA837EB002482F1 /* HomeScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeScreenViewController.xib; path = catalyst/HomeScreenViewController.xib; sourceTree = SOURCE_ROOT; };
+		E5A9D9511BA838E1002482F1 /* FBAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FBAuthViewController.swift; path = catalyst/FBAuthViewController.swift; sourceTree = SOURCE_ROOT; };
+		E5A9D9521BA838E1002482F1 /* FBAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FBAuthViewController.xib; path = catalyst/FBAuthViewController.xib; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,8 +95,12 @@
 			isa = PBXGroup;
 			children = (
 				412E62451BA825D400346E01 /* AppDelegate.swift */,
+				E5A9D9511BA838E1002482F1 /* FBAuthViewController.swift */,
+				E5A9D9521BA838E1002482F1 /* FBAuthViewController.xib */,
 				412E624A1BA825D400346E01 /* UserAuthViewController.swift */,
 				412E4A161BA828D40044F752 /* UserAuthViewController.xib */,
+				E5A9D94D1BA837EB002482F1 /* HomeScreenViewController.swift */,
+				E5A9D94E1BA837EB002482F1 /* HomeScreenViewController.xib */,
 				412E624F1BA825D400346E01 /* Images.xcassets */,
 				412E62511BA825D400346E01 /* LaunchScreen.xib */,
 				412E62471BA825D400346E01 /* Catalyst.xcdatamodeld */,
@@ -223,6 +235,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				412E62531BA825D400346E01 /* LaunchScreen.xib in Resources */,
+				E5A9D9501BA837EB002482F1 /* HomeScreenViewController.xib in Resources */,
+				E5A9D9541BA838E1002482F1 /* FBAuthViewController.xib in Resources */,
 				412E4A171BA828D40044F752 /* UserAuthViewController.xib in Resources */,
 				412E62501BA825D400346E01 /* Images.xcassets in Resources */,
 			);
@@ -290,7 +304,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5A9D9531BA838E1002482F1 /* FBAuthViewController.swift in Sources */,
 				412E624B1BA825D400346E01 /* UserAuthViewController.swift in Sources */,
+				E5A9D94F1BA837EB002482F1 /* HomeScreenViewController.swift in Sources */,
 				412E62491BA825D400346E01 /* Catalyst.xcdatamodeld in Sources */,
 				412E62461BA825D400346E01 /* AppDelegate.swift in Sources */,
 			);

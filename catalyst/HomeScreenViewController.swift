@@ -7,29 +7,43 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 class HomeScreenViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
-    */
-
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+        super.viewDidAppear(animated)
+        
+        checkUserAuth()
+    }
+    
+    func checkUserAuth() {
+    
+        if FBSDKAccessToken.currentAccessToken() == nil {
+            
+            presentViewController(UINavigationController(rootViewController: FBAuthViewController(nibName: "FBAuthViewController", bundle: nil)), animated: true, completion: { () -> Void in
+                
+            })
+        
+            
+        }
+        
+    
+    }
 }
