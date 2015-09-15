@@ -7,3 +7,4 @@ use_frameworks!
 pod 'Firebase'
 pod 'FBSDKLoginKit'
 pod 'SwiftyJSON'
+pod 'SDWebImage', '~> 3.7'

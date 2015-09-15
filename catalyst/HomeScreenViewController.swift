@@ -9,13 +9,14 @@
 import UIKit
 import FBSDKLoginKit
 import Firebase
+import SDWebImage
 
 class HomeScreenViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tvShowLabel: UILabel!
     
-    var people = [String : [String : AnyObject]]()
+    var people = [[String : AnyObject]]()
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -57,7 +58,7 @@ class HomeScreenViewController: UIViewController {
             queryRef.observeEventType(.ChildAdded, withBlock: { (snapshot: FDataSnapshot!) in
 
                 if let person = snapshot.value as? [String: AnyObject] {
-                self.people[snapshot.key] = person
+                self.people.append(person)
                 }
                 self.tableView.reloadData()
                 
@@ -80,7 +81,16 @@ extension HomeScreenViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! HomeScreenTableViewCell
         
+        let person = people[indexPath.row]
         
+        cell.userName.text = person["name"] as? String
+        
+        let urlString = person["avatar"] as? String
+        
+        SDWebImageManager.sharedManager().downloadImageWithURL(NSURL(string: urlString!), options: nil, progress: nil) { (image, error, imageCacheType, finished, url) -> Void in
+            
+            cell.userImageView.image = image
+        }
         
         return cell
     }
