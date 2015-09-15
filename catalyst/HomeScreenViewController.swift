@@ -59,9 +59,11 @@ class HomeScreenViewController: UIViewController {
                 if let person = snapshot.value as? [String: AnyObject] {
                 self.people[snapshot.key] = person
                 }
+                self.tableView.reloadData()
                 
             })
-           
+            
+            
         }
     }
 }
@@ -69,12 +71,16 @@ class HomeScreenViewController: UIViewController {
 extension HomeScreenViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        let b = people.count
         return people.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! HomeScreenTableViewCell
+        
+        
         
         return cell
     }
