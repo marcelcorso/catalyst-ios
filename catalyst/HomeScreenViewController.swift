@@ -12,6 +12,9 @@ import FBSDKLoginKit
 class HomeScreenViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tvShowLabel: UILabel!
+    
+    var people: [AnyObject]?
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -25,7 +28,7 @@ class HomeScreenViewController: UIViewController {
         super.viewDidLoad()
         checkUserAuth()
         
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.registerNib(HomeScreenTableViewCell(), forCellReuseIdentifier: "cell")
         
         navigationItem.title = "Catalyst"
     }
@@ -49,7 +52,7 @@ extension HomeScreenViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as!HomeScreenTableViewCell
         
         return cell
     }
@@ -59,5 +62,18 @@ extension HomeScreenViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 132
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+
+        // save the 'like'
+        let likedPersonId = people[indexPath.row].id
+        let userId = NSUserDefaults.standardUserDefaults().objectForKey("id")
+
+        let ref = Firebase(url:firebaseURL + "/likes/" + likeId.description)
+        let postRef = ref.childByAppendingPath("likes")
+        let likeDict = [dst_user_id: likedPersonId, src_user_id: userId]
+        let post1Ref = postRef.childByAutoId()
+        post1Ref.setValue(likeDict)
     }
 }
