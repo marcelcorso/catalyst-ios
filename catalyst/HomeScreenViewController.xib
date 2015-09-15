@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeScreenViewController" customModule="Catalyst" customModuleProvider="target">
             <connections>
-                <outlet property="tableView" destination="g9h-cW-evX" id="5ZQ-jQ-7xz"/>
+                <outlet property="collectionView" destination="Nnz-xL-EzI" id="Qr7-iS-cXD"/>
                 <outlet property="tvShowLabel" destination="03i-wb-hLi" id="ZZv-RA-73Z"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -16,22 +16,28 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="g9h-cW-evX">
-                    <rect key="frame" x="0.0" y="100" width="414" height="636"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Nnz-xL-EzI">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="GMq-2Q-Gqm">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="B89-aW-iuX"/>
-                        <outlet property="delegate" destination="-1" id="6FW-fc-SNm"/>
+                        <outlet property="dataSource" destination="-1" id="Liw-3m-dy8"/>
+                        <outlet property="delegate" destination="-1" id="5uI-PJ-2cv"/>
                     </connections>
-                </tableView>
+                </collectionView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Also watching:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXH-jr-l9f">
-                    <rect key="frame" x="151" y="10" width="113" height="21"/>
+                    <rect key="frame" x="151.5" y="10" width="112.5" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TV show name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="03i-wb-hLi">
-                    <rect key="frame" x="136" y="41" width="143" height="27"/>
+                    <rect key="frame" x="136" y="40.5" width="143" height="26.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -39,22 +45,17 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="Nnz-xL-EzI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="97A-XF-n0y"/>
                 <constraint firstAttribute="centerX" secondItem="eXH-jr-l9f" secondAttribute="centerX" id="DsH-Hd-1wM"/>
                 <constraint firstItem="eXH-jr-l9f" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="Esv-L8-BtP"/>
-                <constraint firstAttribute="trailing" secondItem="g9h-cW-evX" secondAttribute="trailing" id="UgM-C3-W9k"/>
+                <constraint firstAttribute="trailing" secondItem="Nnz-xL-EzI" secondAttribute="trailing" id="WIR-k6-EHB"/>
                 <constraint firstItem="03i-wb-hLi" firstAttribute="top" secondItem="eXH-jr-l9f" secondAttribute="bottom" constant="10" id="dMa-ba-Cxe"/>
-                <constraint firstItem="g9h-cW-evX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="eet-bN-8AF"/>
-                <constraint firstItem="g9h-cW-evX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="kPp-9w-dUs"/>
-                <constraint firstItem="g9h-cW-evX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="q6M-vz-XBc"/>
-                <constraint firstAttribute="bottom" secondItem="g9h-cW-evX" secondAttribute="bottom" id="uhz-f4-jGF"/>
+                <constraint firstAttribute="bottom" secondItem="Nnz-xL-EzI" secondAttribute="bottom" id="kVj-zT-3eF"/>
+                <constraint firstItem="Nnz-xL-EzI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lw1-CT-9kn"/>
                 <constraint firstAttribute="centerX" secondItem="03i-wb-hLi" secondAttribute="centerX" id="ySa-Hm-LVC"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="eet-bN-8AF"/>
-                </mask>
-            </variation>
+            <point key="canvasLocation" x="35" y="241"/>
         </view>
     </objects>
 </document>

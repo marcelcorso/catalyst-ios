@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="3ch-Qp-SfY" customClass="HomeScreenCollectionViewCell" customModule="Catalyst" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="334" height="376"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="334" height="376"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="89e-bM-vwQ">
+                        <rect key="frame" x="10" y="10" width="314" height="346"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VWg-dP-due">
+                                <rect key="frame" x="0.0" y="0.0" width="314" height="296"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EpZ-dV-vgM">
+                                <rect key="frame" x="262" y="265.5" width="42" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rkL-Sv-n3X">
+                                <rect key="frame" x="0.0" y="296" width="157" height="50"/>
+                                <state key="normal" title="Dismiss">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="noMatchButtonTouched:" destination="3ch-Qp-SfY" eventType="touchUpInside" id="SyY-Az-QSU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LMe-1v-uIM">
+                                <rect key="frame" x="157" y="296" width="157" height="50"/>
+                                <state key="normal" title="Match">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="matchButtonTouched:" destination="3ch-Qp-SfY" eventType="touchUpInside" id="pHa-rC-f2C"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="VWg-dP-due" secondAttribute="bottom" constant="50" id="AvU-QP-yhD"/>
+                            <constraint firstItem="VWg-dP-due" firstAttribute="bottom" secondItem="EpZ-dV-vgM" secondAttribute="bottom" constant="10" id="Dxj-B7-5dh"/>
+                            <constraint firstAttribute="trailing" secondItem="LMe-1v-uIM" secondAttribute="trailing" id="GAB-BH-7fn"/>
+                            <constraint firstItem="VWg-dP-due" firstAttribute="trailing" secondItem="EpZ-dV-vgM" secondAttribute="trailing" constant="10" id="Gsb-ox-DXR"/>
+                            <constraint firstAttribute="bottom" secondItem="LMe-1v-uIM" secondAttribute="bottom" id="OYM-HE-b8X"/>
+                            <constraint firstItem="LMe-1v-uIM" firstAttribute="leading" secondItem="rkL-Sv-n3X" secondAttribute="trailing" id="Pkf-Ag-eN4"/>
+                            <constraint firstAttribute="bottom" secondItem="rkL-Sv-n3X" secondAttribute="bottom" id="TSR-ZN-2r2"/>
+                            <constraint firstAttribute="trailing" secondItem="VWg-dP-due" secondAttribute="trailing" id="ekG-mg-XFA"/>
+                            <constraint firstItem="rkL-Sv-n3X" firstAttribute="trailing" secondItem="89e-bM-vwQ" secondAttribute="trailing" multiplier="0.5" id="fna-dv-RB0"/>
+                            <constraint firstItem="VWg-dP-due" firstAttribute="top" secondItem="89e-bM-vwQ" secondAttribute="top" id="kfi-lh-NtV"/>
+                            <constraint firstItem="rkL-Sv-n3X" firstAttribute="leading" secondItem="89e-bM-vwQ" secondAttribute="leading" id="nWF-gN-P4d"/>
+                            <constraint firstItem="rkL-Sv-n3X" firstAttribute="top" secondItem="VWg-dP-due" secondAttribute="bottom" id="poP-G0-bx4"/>
+                            <constraint firstItem="LMe-1v-uIM" firstAttribute="top" secondItem="VWg-dP-due" secondAttribute="bottom" id="xHl-pr-5fg"/>
+                            <constraint firstItem="VWg-dP-due" firstAttribute="leading" secondItem="89e-bM-vwQ" secondAttribute="leading" id="xpN-eh-2n1"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="89e-bM-vwQ" secondAttribute="trailing" constant="10" id="Azy-eK-qYV"/>
+                <constraint firstAttribute="bottom" secondItem="89e-bM-vwQ" secondAttribute="bottom" constant="20" id="Nyf-6X-jvX"/>
+                <constraint firstItem="89e-bM-vwQ" firstAttribute="top" secondItem="3ch-Qp-SfY" secondAttribute="top" constant="10" id="YZ7-vy-87c"/>
+                <constraint firstItem="89e-bM-vwQ" firstAttribute="leading" secondItem="3ch-Qp-SfY" secondAttribute="leading" constant="10" id="Zw1-RQ-ZVn"/>
+            </constraints>
+            <size key="customSize" width="334" height="376"/>
+            <connections>
+                <outlet property="containerView" destination="89e-bM-vwQ" id="21o-4k-c00"/>
+                <outlet property="dislikeButton" destination="rkL-Sv-n3X" id="jbS-LC-FpZ"/>
+                <outlet property="likeButton" destination="LMe-1v-uIM" id="Kxt-R8-uoK"/>
+                <outlet property="userImageView" destination="VWg-dP-due" id="ijA-pN-5k5"/>
+                <outlet property="userName" destination="EpZ-dV-vgM" id="ujN-Ay-sPw"/>
+            </connections>
+            <point key="canvasLocation" x="408" y="183"/>
+        </collectionViewCell>
+    </objects>
+</document>

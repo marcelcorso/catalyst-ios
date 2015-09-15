@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		255234BE1554927914F51F55 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66774280AE5D357E5549122F /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		4113FB6E1BA86F8C00FD3FA0 /* HomeScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4113FB6C1BA86F8C00FD3FA0 /* HomeScreenTableViewCell.swift */; };
-		4113FB6F1BA86F8C00FD3FA0 /* HomeScreenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4113FB6D1BA86F8C00FD3FA0 /* HomeScreenTableViewCell.xib */; };
+		4113FB6E1BA86F8C00FD3FA0 /* HomeScreenCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4113FB6C1BA86F8C00FD3FA0 /* HomeScreenCollectionViewCell.swift */; };
+		4113FB6F1BA86F8C00FD3FA0 /* HomeScreenCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4113FB6D1BA86F8C00FD3FA0 /* HomeScreenCollectionViewCell.xib */; };
 		412E4A171BA828D40044F752 /* UserAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 412E4A161BA828D40044F752 /* UserAuthViewController.xib */; };
 		412E4A1B1BA840E50044F752 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412E4A1A1BA840E50044F752 /* Globals.swift */; };
 		412E62461BA825D400346E01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412E62451BA825D400346E01 /* AppDelegate.swift */; };
@@ -17,27 +17,16 @@
 		412E624B1BA825D400346E01 /* UserAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412E624A1BA825D400346E01 /* UserAuthViewController.swift */; };
 		412E62501BA825D400346E01 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 412E624F1BA825D400346E01 /* Images.xcassets */; };
 		412E62531BA825D400346E01 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 412E62511BA825D400346E01 /* LaunchScreen.xib */; };
-		412E625F1BA825D400346E01 /* CatalystTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412E625E1BA825D400346E01 /* CatalystTests.swift */; };
 		E5A9D94F1BA837EB002482F1 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A9D94D1BA837EB002482F1 /* HomeScreenViewController.swift */; };
 		E5A9D9501BA837EB002482F1 /* HomeScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5A9D94E1BA837EB002482F1 /* HomeScreenViewController.xib */; };
 		E5A9D9531BA838E1002482F1 /* FBAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A9D9511BA838E1002482F1 /* FBAuthViewController.swift */; };
 		E5A9D9541BA838E1002482F1 /* FBAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5A9D9521BA838E1002482F1 /* FBAuthViewController.xib */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		412E62591BA825D400346E01 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 412E62381BA825D300346E01 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 412E623F1BA825D400346E01;
-			remoteInfo = Catalyst;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		15B8F0A0C824221B6C0DF5B8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		4113FB6C1BA86F8C00FD3FA0 /* HomeScreenTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenTableViewCell.swift; sourceTree = "<group>"; };
-		4113FB6D1BA86F8C00FD3FA0 /* HomeScreenTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeScreenTableViewCell.xib; sourceTree = "<group>"; };
+		4113FB6C1BA86F8C00FD3FA0 /* HomeScreenCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenCollectionViewCell.swift; sourceTree = "<group>"; };
+		4113FB6D1BA86F8C00FD3FA0 /* HomeScreenCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeScreenCollectionViewCell.xib; sourceTree = "<group>"; };
 		412E4A161BA828D40044F752 /* UserAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserAuthViewController.xib; sourceTree = "<group>"; };
 		412E4A1A1BA840E50044F752 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		412E62401BA825D400346E01 /* Catalyst.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Catalyst.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,7 +36,6 @@
 		412E624A1BA825D400346E01 /* UserAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthViewController.swift; sourceTree = "<group>"; };
 		412E624F1BA825D400346E01 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		412E62521BA825D400346E01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		412E62581BA825D400346E01 /* CatalystTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CatalystTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		412E625D1BA825D400346E01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		412E625E1BA825D400346E01 /* CatalystTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalystTests.swift; sourceTree = "<group>"; };
 		66774280AE5D357E5549122F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,13 +52,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				255234BE1554927914F51F55 /* Pods.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		412E62551BA825D400346E01 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,7 +73,6 @@
 			isa = PBXGroup;
 			children = (
 				412E62401BA825D400346E01 /* Catalyst.app */,
-				412E62581BA825D400346E01 /* CatalystTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -107,8 +87,8 @@
 				412E4A161BA828D40044F752 /* UserAuthViewController.xib */,
 				E5A9D94D1BA837EB002482F1 /* HomeScreenViewController.swift */,
 				E5A9D94E1BA837EB002482F1 /* HomeScreenViewController.xib */,
-				4113FB6C1BA86F8C00FD3FA0 /* HomeScreenTableViewCell.swift */,
-				4113FB6D1BA86F8C00FD3FA0 /* HomeScreenTableViewCell.xib */,
+				4113FB6C1BA86F8C00FD3FA0 /* HomeScreenCollectionViewCell.swift */,
+				4113FB6D1BA86F8C00FD3FA0 /* HomeScreenCollectionViewCell.xib */,
 				412E624F1BA825D400346E01 /* Images.xcassets */,
 				412E62511BA825D400346E01 /* LaunchScreen.xib */,
 				412E62471BA825D400346E01 /* Catalyst.xcdatamodeld */,
@@ -183,24 +163,6 @@
 			productReference = 412E62401BA825D400346E01 /* Catalyst.app */;
 			productType = "com.apple.product-type.application";
 		};
-		412E62571BA825D400346E01 /* CatalystTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 412E62651BA825D400346E01 /* Build configuration list for PBXNativeTarget "CatalystTests" */;
-			buildPhases = (
-				412E62541BA825D400346E01 /* Sources */,
-				412E62551BA825D400346E01 /* Frameworks */,
-				412E62561BA825D400346E01 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				412E625A1BA825D400346E01 /* PBXTargetDependency */,
-			);
-			name = CatalystTests;
-			productName = CatalystTests;
-			productReference = 412E62581BA825D400346E01 /* CatalystTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -212,10 +174,6 @@
 				TargetAttributes = {
 					412E623F1BA825D400346E01 = {
 						CreatedOnToolsVersion = 6.4;
-					};
-					412E62571BA825D400346E01 = {
-						CreatedOnToolsVersion = 6.4;
-						TestTargetID = 412E623F1BA825D400346E01;
 					};
 				};
 			};
@@ -233,7 +191,6 @@
 			projectRoot = "";
 			targets = (
 				412E623F1BA825D400346E01 /* Catalyst */,
-				412E62571BA825D400346E01 /* CatalystTests */,
 			);
 		};
 /* End PBXProject section */
@@ -243,19 +200,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4113FB6F1BA86F8C00FD3FA0 /* HomeScreenTableViewCell.xib in Resources */,
+				4113FB6F1BA86F8C00FD3FA0 /* HomeScreenCollectionViewCell.xib in Resources */,
 				412E62531BA825D400346E01 /* LaunchScreen.xib in Resources */,
 				E5A9D9501BA837EB002482F1 /* HomeScreenViewController.xib in Resources */,
 				E5A9D9541BA838E1002482F1 /* FBAuthViewController.xib in Resources */,
 				412E4A171BA828D40044F752 /* UserAuthViewController.xib in Resources */,
 				412E62501BA825D400346E01 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		412E62561BA825D400346E01 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,7 +266,7 @@
 			files = (
 				E5A9D9531BA838E1002482F1 /* FBAuthViewController.swift in Sources */,
 				412E624B1BA825D400346E01 /* UserAuthViewController.swift in Sources */,
-				4113FB6E1BA86F8C00FD3FA0 /* HomeScreenTableViewCell.swift in Sources */,
+				4113FB6E1BA86F8C00FD3FA0 /* HomeScreenCollectionViewCell.swift in Sources */,
 				412E4A1B1BA840E50044F752 /* Globals.swift in Sources */,
 				E5A9D94F1BA837EB002482F1 /* HomeScreenViewController.swift in Sources */,
 				412E62491BA825D400346E01 /* Catalyst.xcdatamodeld in Sources */,
@@ -324,23 +274,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		412E62541BA825D400346E01 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				412E625F1BA825D400346E01 /* CatalystTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		412E625A1BA825D400346E01 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 412E623F1BA825D400346E01 /* Catalyst */;
-			targetProxy = 412E62591BA825D400346E01 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		412E62511BA825D400346E01 /* LaunchScreen.xib */ = {
@@ -390,7 +324,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -429,7 +363,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -445,6 +379,7 @@
 				INFOPLIST_FILE = Catalyst/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -456,40 +391,7 @@
 				INFOPLIST_FILE = Catalyst/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		412E62661BA825D400346E01 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = CatalystTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Catalyst.app/Catalyst";
-			};
-			name = Debug;
-		};
-		412E62671BA825D400346E01 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = CatalystTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Catalyst.app/Catalyst";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -510,15 +412,6 @@
 			buildConfigurations = (
 				412E62631BA825D400346E01 /* Debug */,
 				412E62641BA825D400346E01 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		412E62651BA825D400346E01 /* Build configuration list for PBXNativeTarget "CatalystTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				412E62661BA825D400346E01 /* Debug */,
-				412E62671BA825D400346E01 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

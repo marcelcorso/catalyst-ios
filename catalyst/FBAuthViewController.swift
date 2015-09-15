@@ -9,7 +9,6 @@
 import UIKit
 import FBSDKLoginKit
 import Firebase
-import SwiftyJSON
 
 class FBAuthViewController: UIViewController, FBSDKLoginButtonDelegate {
     

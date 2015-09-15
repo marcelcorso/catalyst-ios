@@ -34,7 +34,9 @@ class UserAuthViewController: UIViewController {
         
         
         if let associatedCode = codeEntryTextField.text as? String where count(associatedCode) > 0 {
+            
             let ref = Firebase(url:firebaseURL + "/code2userid/" + self.codeEntryTextField.text)
+            
             ref.setValue(id, withCompletionBlock: { (error: NSError!, firebase: Firebase!) -> Void in
                 
                 if error == nil {

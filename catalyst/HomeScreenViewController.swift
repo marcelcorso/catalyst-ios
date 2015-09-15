@@ -13,7 +13,7 @@ import SDWebImage
 
 class HomeScreenViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tvShowLabel: UILabel!
     
     var people = [[String : AnyObject]]()
@@ -29,9 +29,35 @@ class HomeScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.registerNib(UINib(nibName: "HomeScreenTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
+        NSNotificationCenter.defaultCenter().addObserverForName(matchNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (notification: NSNotification!) -> Void in
+            
+            // TODO: Corné : Firebase code for a match
+        }
         
-        navigationItem.title = "Catalyst"
+        
+        NSNotificationCenter.defaultCenter().addObserverForName(noMatchNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (notification: NSNotification!) -> Void in
+            
+            // TODO: Corné: Notification code for no match
+            
+            
+        }
+        
+        collectionView.registerNib(UINib(nibName: "HomeScreenCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "collcell")
+        
+        navigationItem.titleView = UIImageView(image: UIImage(named: "catalyst_logo"))
+        
+        let settsButton = UIBarButtonItem(image: UIImage(named: "config"), style: .Plain, target: self, action: "settingsButtonTouched:")
+        settsButton.tintColor = UIColor.blackColor()
+        navigationItem.leftBarButtonItem = settsButton
+        let chatButton = UIBarButtonItem(image: UIImage(named: "msg"), style: .Plain, target: self, action: "messageButtonTouched:")
+        chatButton.tintColor = UIColor.blackColor()
+        navigationItem.rightBarButtonItem = chatButton
+    }
+    
+    func settingsButtonTouched(sender: UIBarButtonItem) {
+    
+        
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -44,11 +70,11 @@ class HomeScreenViewController: UIViewController {
             let fbAuthViewController = FBAuthViewController(nibName: "FBAuthViewController", bundle: nil)
             presentViewController(fbAuthViewController, animated: false, completion: nil)
         } else if userId == nil {
-
+            
             let userAuthViewController = UserAuthViewController(nibName: "UserAuthViewController", bundle: nil)
             presentViewController(userAuthViewController, animated: false, completion: nil)
         } else {
-        
+            
             var channelNumber = 1
             
             let ref = Firebase(url:"https://catalysttv.firebaseio.com/users")
@@ -56,62 +82,49 @@ class HomeScreenViewController: UIViewController {
             var queryRef = ref.queryOrderedByChild("viewing_channel").queryEndingAtValue(channelNumber)!.queryStartingAtValue(channelNumber)
             
             queryRef.observeEventType(.ChildAdded, withBlock: { (snapshot: FDataSnapshot!) in
-
-                if let person = snapshot.value as? [String: AnyObject] {
-                self.people.append(person)
-                }
-                self.tableView.reloadData()
                 
+                if let person = snapshot.value as? [String: AnyObject] {
+                    self.people.append(person)
+                }
+                self.collectionView.reloadData()
             })
-            
-            
         }
     }
 }
 
-extension HomeScreenViewController: UITableViewDataSource {
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        let b = people.count
-        return people.count
+extension HomeScreenViewController : UICollectionViewDelegateFlowLayout {
+
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSize(width: CGRectGetWidth(UIScreen.mainScreen().bounds), height: 260)
     }
+}
+
+extension HomeScreenViewController : UICollectionViewDataSource  {
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! HomeScreenTableViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("collcell", forIndexPath: indexPath) as! HomeScreenCollectionViewCell
         
-        let person = people[indexPath.row]
+        let index = indexPath.item
         
+        let person = people[indexPath.item]
+        cell.person = person
         cell.userName.text = person["name"] as? String
         
-        let urlString = person["avatar"] as? String
-        
-        SDWebImageManager.sharedManager().downloadImageWithURL(NSURL(string: urlString!), options: nil, progress: nil) { (image, error, imageCacheType, finished, url) -> Void in
-            
-            cell.userImageView.image = image
-        }
-        
+        if let urlString = person["avatar"] as? String,
+            url = NSURL(string: urlString) {
+                
+                SDWebImageManager.sharedManager().downloadImageWithURL(url, options: nil, progress: nil) { (image, error, imageCacheType, finished, url) -> Void in
+                    
+                    if image != nil {
+                    cell.userImageView.image = image
+                    }
+                }
+        }        
         return cell
     }
-}
-
-extension HomeScreenViewController: UITableViewDelegate {
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 132
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-
-        /*// save the 'like'
-        let likedPersonId = people[indexPath.row].id
-        let userId = NSUserDefaults.standardUserDefaults().objectForKey("id")
-
-        let ref = Firebase(url:firebaseURL + "/" + userId)
-        let postRef = ref.childByAppendingPath("likes")
-        let likeDict = [dst_user_id: likedPersonId, src_user_id: userId]
-        let post1Ref = postRef.childByAutoId()
-        post1Ref.setValue(likeDict) */
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return people.count
     }
 }
