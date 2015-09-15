@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		255234BE1554927914F51F55 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66774280AE5D357E5549122F /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		412E4A171BA828D40044F752 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 412E4A161BA828D40044F752 /* ViewController.xib */; };
+		412E4A171BA828D40044F752 /* UserAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 412E4A161BA828D40044F752 /* UserAuthViewController.xib */; };
 		412E62461BA825D400346E01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412E62451BA825D400346E01 /* AppDelegate.swift */; };
 		412E62491BA825D400346E01 /* Catalyst.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 412E62471BA825D400346E01 /* Catalyst.xcdatamodeld */; };
-		412E624B1BA825D400346E01 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412E624A1BA825D400346E01 /* ViewController.swift */; };
+		412E624B1BA825D400346E01 /* UserAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412E624A1BA825D400346E01 /* UserAuthViewController.swift */; };
 		412E62501BA825D400346E01 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 412E624F1BA825D400346E01 /* Images.xcassets */; };
 		412E62531BA825D400346E01 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 412E62511BA825D400346E01 /* LaunchScreen.xib */; };
 		412E625F1BA825D400346E01 /* CatalystTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412E625E1BA825D400346E01 /* CatalystTests.swift */; };
@@ -29,12 +29,12 @@
 
 /* Begin PBXFileReference section */
 		15B8F0A0C824221B6C0DF5B8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		412E4A161BA828D40044F752 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		412E4A161BA828D40044F752 /* UserAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserAuthViewController.xib; sourceTree = "<group>"; };
 		412E62401BA825D400346E01 /* Catalyst.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Catalyst.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		412E62441BA825D400346E01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		412E62451BA825D400346E01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		412E62481BA825D400346E01 /* Catalyst.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Catalyst.xcdatamodel; sourceTree = "<group>"; };
-		412E624A1BA825D400346E01 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		412E624A1BA825D400346E01 /* UserAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthViewController.swift; sourceTree = "<group>"; };
 		412E624F1BA825D400346E01 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		412E62521BA825D400346E01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		412E62581BA825D400346E01 /* CatalystTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CatalystTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,8 +87,8 @@
 			isa = PBXGroup;
 			children = (
 				412E62451BA825D400346E01 /* AppDelegate.swift */,
-				412E624A1BA825D400346E01 /* ViewController.swift */,
-				412E4A161BA828D40044F752 /* ViewController.xib */,
+				412E624A1BA825D400346E01 /* UserAuthViewController.swift */,
+				412E4A161BA828D40044F752 /* UserAuthViewController.xib */,
 				412E624F1BA825D400346E01 /* Images.xcassets */,
 				412E62511BA825D400346E01 /* LaunchScreen.xib */,
 				412E62471BA825D400346E01 /* Catalyst.xcdatamodeld */,
@@ -223,7 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				412E62531BA825D400346E01 /* LaunchScreen.xib in Resources */,
-				412E4A171BA828D40044F752 /* ViewController.xib in Resources */,
+				412E4A171BA828D40044F752 /* UserAuthViewController.xib in Resources */,
 				412E62501BA825D400346E01 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,7 +290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				412E624B1BA825D400346E01 /* ViewController.swift in Sources */,
+				412E624B1BA825D400346E01 /* UserAuthViewController.swift in Sources */,
 				412E62491BA825D400346E01 /* Catalyst.xcdatamodeld in Sources */,
 				412E62461BA825D400346E01 /* AppDelegate.swift in Sources */,
 			);
