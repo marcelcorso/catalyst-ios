@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		255234BE1554927914F51F55 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66774280AE5D357E5549122F /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		412E4A171BA828D40044F752 /* UserAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 412E4A161BA828D40044F752 /* UserAuthViewController.xib */; };
+		412E4A1B1BA840E50044F752 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412E4A1A1BA840E50044F752 /* Globals.swift */; };
 		412E62461BA825D400346E01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412E62451BA825D400346E01 /* AppDelegate.swift */; };
 		412E62491BA825D400346E01 /* Catalyst.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 412E62471BA825D400346E01 /* Catalyst.xcdatamodeld */; };
 		412E624B1BA825D400346E01 /* UserAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412E624A1BA825D400346E01 /* UserAuthViewController.swift */; };
@@ -34,6 +35,7 @@
 /* Begin PBXFileReference section */
 		15B8F0A0C824221B6C0DF5B8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		412E4A161BA828D40044F752 /* UserAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserAuthViewController.xib; sourceTree = "<group>"; };
+		412E4A1A1BA840E50044F752 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		412E62401BA825D400346E01 /* Catalyst.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Catalyst.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		412E62441BA825D400346E01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		412E62451BA825D400346E01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				412E624F1BA825D400346E01 /* Images.xcassets */,
 				412E62511BA825D400346E01 /* LaunchScreen.xib */,
 				412E62471BA825D400346E01 /* Catalyst.xcdatamodeld */,
+				412E4A1A1BA840E50044F752 /* Globals.swift */,
 				412E62431BA825D400346E01 /* Supporting Files */,
 			);
 			path = Catalyst;
@@ -306,6 +309,7 @@
 			files = (
 				E5A9D9531BA838E1002482F1 /* FBAuthViewController.swift in Sources */,
 				412E624B1BA825D400346E01 /* UserAuthViewController.swift in Sources */,
+				412E4A1B1BA840E50044F752 /* Globals.swift in Sources */,
 				E5A9D94F1BA837EB002482F1 /* HomeScreenViewController.swift in Sources */,
 				412E62491BA825D400346E01 /* Catalyst.xcdatamodeld in Sources */,
 				412E62461BA825D400346E01 /* AppDelegate.swift in Sources */,
