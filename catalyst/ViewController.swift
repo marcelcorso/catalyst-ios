@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var codeEntryTextField: UITextField!
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: "ViewController", bundle: nil)
@@ -29,7 +32,23 @@ class ViewController: UIViewController {
     }
 
     @IBAction func connectButtonTapped(sender: AnyObject) {
-        // send code :D
+        let ref = Firebase(url:firebaseURL + "/code2userid/")
+        
+        ref.queryOrderedByChild("aaaa").observeEventType(.ChildAdded, withBlock: { data in
+            if let code = data.value.description, entry = self.codeEntryTextField.text {
+                if code != entry {
+                    println("wrong code!")
+                    var alert = UIAlertController(title: "Error", message: "Invalid code!", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                } else {
+                    println("correct code!")
+                    // proceed to main view
+                }
+            }
+        })
+        
+        let code = codeEntryTextField.text
     }
 }
 

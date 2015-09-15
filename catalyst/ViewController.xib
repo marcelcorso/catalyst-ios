@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController" customModule="Catalyst" customModuleProvider="target">
             <connections>
+                <outlet property="codeEntryTextField" destination="i1P-FS-zKZ" id="Rfy-Ou-cLf"/>
                 <outlet property="view" destination="iN0-l3-epB" id="IL0-bJ-Vjf"/>
             </connections>
         </placeholder>
@@ -14,8 +15,11 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i1P-FS-zKZ">
-                    <rect key="frame" x="25" y="121" width="364" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i1P-FS-zKZ">
+                    <rect key="frame" x="117" y="121" width="180" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="180" id="dX1-DC-q96"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
@@ -50,7 +54,9 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="BjE-wk-oZH"/>
                     <exclude reference="OO7-a0-v9b"/>
+                    <exclude reference="uPw-c9-HDl"/>
                 </mask>
             </variation>
         </view>

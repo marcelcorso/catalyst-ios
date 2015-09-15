@@ -3,8 +3,50 @@
 <plist version="1.0">
 <dict>
 	<key>SchemeUserState</key>
-	<dict/>
+	<dict>
+		<key>Pods-Bolts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-FBSDKCoreKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-FBSDKLoginKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict/>
+	<dict>
+		<key>507DF81274D754CB2A2D31F2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7655D87720B49DE5084F2A46</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>98DE345B618B213A40434D8A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DB37E2591852F1C503232D51</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
 </dict>
 </plist>
