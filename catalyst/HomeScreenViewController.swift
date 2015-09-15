@@ -70,7 +70,7 @@ extension HomeScreenViewController: UITableViewDelegate {
         let likedPersonId = people[indexPath.row].id
         let userId = NSUserDefaults.standardUserDefaults().objectForKey("id")
 
-        let ref = Firebase(url:firebaseURL + "/likes/" + likeId.description)
+        let ref = Firebase(url:firebaseURL + "/" + userId)
         let postRef = ref.childByAppendingPath("likes")
         let likeDict = [dst_user_id: likedPersonId, src_user_id: userId]
         let post1Ref = postRef.childByAutoId()
