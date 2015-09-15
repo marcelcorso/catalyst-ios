@@ -20,7 +20,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VWg-dP-due">
                                 <rect key="frame" x="0.0" y="0.0" width="314" height="296"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradient" translatesAutoresizingMaskIntoConstraints="NO" id="LVJ-Ee-ZSn" userLabel="gradient">
+                            <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradient" translatesAutoresizingMaskIntoConstraints="NO" id="LVJ-Ee-ZSn" userLabel="gradient">
                                 <rect key="frame" x="-0.5" y="0.0" width="314" height="296"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EpZ-dV-vgM">
@@ -84,6 +84,7 @@
             <connections>
                 <outlet property="containerView" destination="89e-bM-vwQ" id="21o-4k-c00"/>
                 <outlet property="dislikeButton" destination="rkL-Sv-n3X" id="jbS-LC-FpZ"/>
+                <outlet property="gradientImageView" destination="LVJ-Ee-ZSn" id="qWL-mN-lBe"/>
                 <outlet property="likeButton" destination="LMe-1v-uIM" id="Kxt-R8-uoK"/>
                 <outlet property="userImageView" destination="VWg-dP-due" id="ijA-pN-5k5"/>
                 <outlet property="userName" destination="EpZ-dV-vgM" id="ujN-Ay-sPw"/>
