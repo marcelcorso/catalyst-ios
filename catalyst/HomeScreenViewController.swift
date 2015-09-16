@@ -261,22 +261,23 @@ extension HomeScreenViewController : UICollectionViewDataSource  {
         
         let header = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "header", forIndexPath: indexPath) as! HomeHeaderView
         
-        let userId = NSUserDefaults.standardUserDefaults().objectForKey("id") as! String
-        var ref1 = Firebase(url:"https://catalysttv.firebaseio.com/users/\(userId)/viewing/now/title")
-        
-        ref1.observeEventType(.Value, withBlock: { snapshot in
-            if let title = snapshot.value as? String {
-                header.programTitleLabel.text = title
-            }
-        })
-        
-        var ref2 = Firebase(url:"https://catalysttv.firebaseio.com/users/\(userId)/viewing_channel/")
-        
-        ref2.observeEventType(.Value, withBlock: { snapshot in
-            if let channel = snapshot.value as? String {
-                header.channelTitleLabel.text = "channel " + channel
-            }
-        })
+        if let userId = NSUserDefaults.standardUserDefaults().objectForKey("id") as? String {
+            var ref1 = Firebase(url:"https://catalysttv.firebaseio.com/users/\(userId)/viewing/now/title")
+            
+            ref1.observeEventType(.Value, withBlock: { snapshot in
+                if let title = snapshot.value as? String {
+                    header.programTitleLabel.text = title
+                }
+            })
+            
+            var ref2 = Firebase(url:"https://catalysttv.firebaseio.com/users/\(userId)/viewing_channel/")
+            
+            ref2.observeEventType(.Value, withBlock: { snapshot in
+                if let channel = snapshot.value as? String {
+                    header.channelTitleLabel.text = "channel " + channel
+                }
+            })
+        }
         
         return header
     }
