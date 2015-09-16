@@ -29,6 +29,7 @@ class FBAuthViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
+    
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         
         if result.token != nil {
@@ -68,7 +69,6 @@ class FBAuthViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func loginButtonWillLogin(loginButton: FBSDKLoginButton!) -> Bool {
-        
         return true
     }
     

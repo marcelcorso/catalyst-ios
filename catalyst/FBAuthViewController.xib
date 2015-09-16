@@ -2,6 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FBAuthViewController" customModule="Catalyst" customModuleProvider="target">
@@ -11,11 +13,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cjc-00-fOA" customClass="FBSDKLoginButton">
-                    <rect key="frame" x="277" y="200" width="46" height="30"/>
+                    <rect key="frame" x="184" y="606" width="46" height="30"/>
                     <state key="normal" title="Button">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -23,23 +25,50 @@
                         <outlet property="delegate" destination="-1" id="diV-qo-W9u"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWC-qp-qPD">
-                    <rect key="frame" x="20" y="100" width="54" height="30"/>
-                    <state key="normal" title="Dismiss">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="dismissButtonTouched:" destination="-1" eventType="touchUpInside" id="ZCd-Sa-QB7"/>
-                    </connections>
-                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="catalyst_logo big" translatesAutoresizingMaskIntoConstraints="NO" id="N75-Go-MHQ">
+                    <rect key="frame" x="130" y="168" width="154" height="154"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="154" id="R5V-VT-6Bt"/>
+                        <constraint firstAttribute="width" secondItem="N75-Go-MHQ" secondAttribute="height" multiplier="1:1" id="UwU-m4-00h"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Catalyst" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3zp-51-XP4">
+                    <rect key="frame" x="164" y="347" width="86" height="29"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meet people who share the same TV taste as you" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4M3-GZ-CdS">
+                    <rect key="frame" x="107" y="401" width="200" height="41"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="AHu-Rw-qxt"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="centerX" secondItem="3zp-51-XP4" secondAttribute="centerX" id="4P8-Xz-WgF"/>
+                <constraint firstAttribute="centerX" secondItem="4M3-GZ-CdS" secondAttribute="centerX" id="N8n-1v-31o"/>
                 <constraint firstAttribute="centerX" secondItem="Cjc-00-fOA" secondAttribute="centerX" id="QvY-Mt-hb1"/>
-                <constraint firstItem="PWC-qp-qPD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="j0p-mA-g1I"/>
-                <constraint firstItem="PWC-qp-qPD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="mAr-Wd-D0c"/>
-                <constraint firstItem="Cjc-00-fOA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="200" id="sBy-zp-exI"/>
+                <constraint firstItem="3zp-51-XP4" firstAttribute="top" secondItem="N75-Go-MHQ" secondAttribute="bottom" constant="25" id="aeR-yz-x5X"/>
+                <constraint firstItem="4M3-GZ-CdS" firstAttribute="top" secondItem="3zp-51-XP4" secondAttribute="bottom" constant="25" id="coT-zV-HWZ"/>
+                <constraint firstAttribute="centerX" secondItem="N75-Go-MHQ" secondAttribute="centerX" id="eKh-CL-Ed9"/>
+                <constraint firstAttribute="bottom" secondItem="Cjc-00-fOA" secondAttribute="bottom" constant="100" id="lYv-IW-EpI"/>
+                <constraint firstItem="Cjc-00-fOA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="400" id="sBy-zp-exI"/>
+                <constraint firstAttribute="centerY" secondItem="N75-Go-MHQ" secondAttribute="centerY" multiplier="1.5" id="wwO-f6-KgY"/>
             </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="sBy-zp-exI"/>
+                </mask>
+            </variation>
         </view>
     </objects>
+    <resources>
+        <image name="catalyst_logo big" width="308" height="308"/>
+    </resources>
 </document>

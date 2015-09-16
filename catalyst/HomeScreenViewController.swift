@@ -94,6 +94,7 @@ class HomeScreenViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func settingsButtonTouched(sender: UIBarButtonItem) {
+
         // TODO: fill this constants for real:
         let mineUserId = 1
         let mineUserName = "Pastor Marco Feliciano"
@@ -128,6 +129,7 @@ class HomeScreenViewController: UIViewController, UIGestureRecognizerDelegate {
             "message": "\(arc4random_uniform(7)) John Lennon foi castigado e morto por Deus por ter dito em certa ocasião que 'Os Beatles são mais populares do que Jesus Cristo'"
         ]
         aNewMessageRef.setValue(massage)
+
         
     }
     
