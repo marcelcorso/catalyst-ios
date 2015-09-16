@@ -10,13 +10,13 @@ import UIKit
 
 class ChatViewController: UIViewController {
 
+    @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
+        (collectionView.collectionViewLayout as! UICollectionViewFlowLayout).estimatedItemSize = CGSize(width: 300, height: 300)
     }
-
-
+    
 }
 
 extension ChatViewController : UICollectionViewDataSource {
