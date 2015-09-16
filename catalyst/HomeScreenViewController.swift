@@ -108,15 +108,11 @@ class HomeScreenViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func checkUserAuth() {
+        let userId = NSUserDefaults.standardUserDefaults().objectForKey("id") as? String
         if FBSDKAccessToken.currentAccessToken() == nil {
             let fbAuthViewController = FBAuthViewController(nibName: "FBAuthViewController", bundle: nil)
             presentViewController(fbAuthViewController, animated: false, completion: nil)
-        } else if userId == nil {
-            
-            let userAuthViewController = UserAuthViewController(nibName: "UserAuthViewController", bundle: nil)
-            presentViewController(userAuthViewController, animated: false, completion: nil)
         } else {
-            
             let request = FBSDKGraphRequest(graphPath: "me?fields=id,name,picture.type(large)", parameters: [:]).startWithCompletionHandler { (connection, result, error) -> Void in
                 
                 if error != nil {
@@ -137,7 +133,12 @@ class HomeScreenViewController: UIViewController, UIGestureRecognizerDelegate {
                         
                         NSUserDefaults.standardUserDefaults().setObject(id, forKey: "id")
                         NSUserDefaults.standardUserDefaults().setObject(name, forKey: "name")
-                        self.dismissViewControllerAnimated(true, completion: nil)
+                        self.dismissViewControllerAnimated(false, completion: { () -> Void in
+                            
+                            //
+                            let userAuthViewController = UserAuthViewController(nibName: "UserAuthViewController", bundle: nil)
+                            self.presentViewController(userAuthViewController, animated: false, completion: nil)
+                        })
                         
                     }
                 }

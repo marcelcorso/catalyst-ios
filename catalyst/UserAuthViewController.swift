@@ -81,7 +81,7 @@ class UserAuthViewController: UIViewController {
             ref.setValue(id, withCompletionBlock: { (error: NSError!, firebase: Firebase!) -> Void in
                 
                 if error == nil {
-                userId = id
+                let userId = NSUserDefaults.standardUserDefaults().objectForKey("id") as! String
                 self.dismissViewControllerAnimated(true, completion: nil)
                 } else {
                 
