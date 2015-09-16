@@ -34,6 +34,9 @@
                     <rect key="frame" x="0.0" y="706" width="414" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="UT6-x5-ojn"/>
+                    </connections>
                 </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

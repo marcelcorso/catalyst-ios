@@ -87,7 +87,7 @@ class ChatViewController: UIViewController {
             "author_name": mineUserName,
             "message": "\(arc4random_uniform(7)) John Lennon foi castigado e morto por Deus por ter dito em certa ocasião que 'Os Beatles são mais populares do que Jesus Cristo'"
         ]
-        aNewMessageRef.setValue(massage)
+        //aNewMessageRef.setValue(massage)
         
     }
     
@@ -121,7 +121,31 @@ extension ChatViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
         
-        return CGSize(width: CGRectGetWidth(collectionView.bounds), height: 300)
+        return CGSize(width: CGRectGetWidth(collectionView.bounds), height: 200)
         
     }
+}
+
+extension ChatViewController : UITextFieldDelegate {
+
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        let message = textField.text
+        
+       // let ref = Firebase(url:"https://catalysttv.firebaseio.com/chat/" + room)
+        
+        // create a new message:
+        /*let aNewMessageRef = ref.childByAutoId()
+        let massage = [
+            "author_id": mineUserId,
+            "author_name": mineUserName,
+            "message": "\(arc4random_uniform(7)) John Lennon foi castigado e morto por Deus por ter dito em certa ocasião que 'Os Beatles são mais populares do que Jesus Cristo'"
+        ]
+        //aNewMessageRef.setValue(massage)
+        */
+
+        return true
+    }
+    
 }
