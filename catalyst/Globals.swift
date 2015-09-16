@@ -9,4 +9,3 @@
 import Foundation
 
 let firebaseURL = "https://catalysttv.firebaseio.com"
-var userId: String?
