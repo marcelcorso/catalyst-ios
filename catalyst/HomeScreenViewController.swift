@@ -82,6 +82,7 @@ class HomeScreenViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         
         collectionView.registerNib(UINib(nibName: "HomeScreenCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "collcell")
+        collectionView.registerNib(UINib(nibName: "HomeHeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "header")
         
         navigationItem.titleView = UIImageView(image: UIImage(named: "catalyst_logo"))
         
@@ -91,8 +92,6 @@ class HomeScreenViewController: UIViewController, UIGestureRecognizerDelegate {
         let chatButton = UIBarButtonItem(image: UIImage(named: "msg"), style: .Plain, target: self, action: "matchesButtonTouched:")
         chatButton.tintColor = UIColor.blackColor()
         navigationItem.rightBarButtonItem = chatButton
-        
-        checkUserAuth()
     }
     
     func settingsButtonTouched(sender: UIBarButtonItem) {
@@ -142,6 +141,7 @@ class HomeScreenViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        checkUserAuth()
     }
     
     func checkUserAuth() {
@@ -192,9 +192,13 @@ class HomeScreenViewController: UIViewController, UIGestureRecognizerDelegate {
                         NSUserDefaults.standardUserDefaults().setObject(name, forKey: "name")
                         self.dismissViewControllerAnimated(false, completion: nil)
                         
+                        let code = NSUserDefaults.standardUserDefaults().objectForKey("userCode")
                         
-                        let userAuthViewController = UserAuthViewController(nibName: "UserAuthViewController", bundle: nil)
-                        self.presentViewController(userAuthViewController, animated: false, completion: nil)
+                        if code == nil {
+                            let userAuthViewController = UserAuthViewController(nibName: "UserAuthViewController", bundle: nil)
+                            self.presentViewController(userAuthViewController, animated: false, completion: nil)
+                            self.collectionView.reloadData()
+                        }
                         
                     }
                 }
@@ -235,7 +239,38 @@ extension HomeScreenViewController : UICollectionViewDataSource  {
         return cell
     }
     
+    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        
+        let header = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "header", forIndexPath: indexPath) as! HomeHeaderView
+        
+        let userId = NSUserDefaults.standardUserDefaults().objectForKey("id") as! String
+        var ref1 = Firebase(url:"https://catalysttv.firebaseio.com/users/\(userId)/viewing/now/title")
+        
+        ref1.observeEventType(.Value, withBlock: { snapshot in
+            if let title = snapshot.value as? String {
+                header.programTitleLabel.text = title
+            }
+        })
+        
+        var ref2 = Firebase(url:"https://catalysttv.firebaseio.com/users/\(userId)/viewing_channel/")
+        
+        ref2.observeEventType(.Value, withBlock: { snapshot in
+            if let channel = snapshot.value as? String {
+                header.channelTitleLabel.text = "channel " + channel
+            }
+        })
+        
+        return header
+    }
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return people.count
+    }
+}
+
+extension HomeScreenViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.bounds.size.width, height: 80)
     }
 }
