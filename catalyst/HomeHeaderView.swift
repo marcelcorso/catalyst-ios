@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class HomeHeaderView: UICollectionReusableView {
     
@@ -15,13 +16,12 @@ class HomeHeaderView: UICollectionReusableView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        programTitleLabel.text = nil
-        channelTitleLabel.text = nil
+//        programTitleLabel.text = nil
+//        channelTitleLabel.text = nil
     }
     
 }
