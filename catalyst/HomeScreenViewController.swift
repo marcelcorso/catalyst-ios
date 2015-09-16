@@ -61,13 +61,11 @@ class HomeScreenViewController: UIViewController, UIGestureRecognizerDelegate {
                     
                     // set notification
                     let likedPersonsName = notification.object!["name"] as! String
-                    let myNotificationsRef = myRef.childByAppendingPath("notification")
-                    let myNotificationRef = myNotificationsRef.childByAutoId()
-                    myNotificationsRef.setValue("Wow, \(likedPersonsName) likes you too!")
+                    let myNotificationRef = myRef.childByAppendingPath("notification")
+                    myNotificationRef.setValue("Wow, \(likedPersonsName) likes you too!")
                     
                     let myName = NSUserDefaults.standardUserDefaults().objectForKey("name") as! String
-                    let likedPersonsNotificationsRef = likedPersonRef.childByAppendingPath("notification")
-                    let likedPersonsNotificationRef = likedPersonsNotificationsRef.childByAutoId()
+                    let likedPersonsNotificationRef = likedPersonRef.childByAppendingPath("notification")
                     likedPersonsNotificationRef.setValue("Wow, \(myName) likes you too!")
                 }
             })
@@ -182,6 +180,24 @@ class HomeScreenViewController: UIViewController, UIGestureRecognizerDelegate {
                                         if let person = snapshot.value as? [String: AnyObject] {
                                             self.people.append(person)
                                         }
+                                        var encountered = [[String : AnyObject]]()
+                                        for person in self.people {
+                                            let id = person["facebook_id"] as! String
+                                            
+                                            var found = Bool()
+                                            for encounteredPerson in encountered {
+                                                if encounteredPerson["facebook_id"] as! String == id {
+                                                    found = true
+                                                } else {
+                                                    found = false
+                                                }
+                                            }
+                                            if !found {
+                                                encountered.append(person)
+                                            }
+                                        }
+                                        self.people = encountered
+                                        
                                         self.collectionView.reloadData()
                                     })
                                 }

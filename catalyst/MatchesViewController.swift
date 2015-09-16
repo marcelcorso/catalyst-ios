@@ -53,6 +53,25 @@ class MatchesViewController: UIViewController {
         matchRef.observeEventType(.Value, withBlock: { matchSnapshot in
             if let match = matchSnapshot.value as? [String : AnyObject] {
                 self.matches.append(match)
+                
+                var encountered = [[String : AnyObject]]()
+                for match in self.matches {
+                    let id = match["facebook_id"] as! String
+                    
+                    var found = Bool()
+                    for encounteredPerson in encountered {
+                        if encounteredPerson["facebook_id"] as! String == id {
+                            found = true
+                        } else {
+                            found = false
+                        }
+                    }
+                    if !found {
+                        encountered.append(match)
+                    }
+                }
+                self.matches = encountered
+                
                 self.tableView.reloadData()
             }
         })
