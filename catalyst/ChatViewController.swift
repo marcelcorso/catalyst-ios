@@ -11,8 +11,11 @@ import Firebase
 
 class ChatViewController: UIViewController {
 
+    @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
+
+	(collectionView.collectionViewLayout as! UICollectionViewFlowLayout).estimatedItemSize = CGSize(width: 300, height: 300)
 
         let userId = NSUserDefaults.standardUserDefaults().objectForKey("id") as! String
         let mineUserId =  NSUserDefaults.standardUserDefaults().objectForKey("id") as! String
@@ -56,8 +59,7 @@ class ChatViewController: UIViewController {
         aNewMessageRef.setValue(massage)
 
     }
-
-
+    
 }
 
 extension ChatViewController : UICollectionViewDataSource {

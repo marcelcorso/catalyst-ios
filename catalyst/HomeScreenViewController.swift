@@ -117,6 +117,32 @@ class HomeScreenViewController: UIViewController, UIGestureRecognizerDelegate {
             presentViewController(userAuthViewController, animated: false, completion: nil)
         } else {
             
+            let request = FBSDKGraphRequest(graphPath: "me?fields=id,name,picture.type(large)", parameters: [:]).startWithCompletionHandler { (connection, result, error) -> Void in
+                
+                if error != nil {
+                    println(error)
+                } else {
+                    if let id = result["id"] as? String,
+                        name = result["name"] as? String,
+                        pictureData = result["picture"] as? [String: AnyObject],
+                        picture = pictureData["data"] as? [String : AnyObject],
+                        url = picture["url"] as? String
+                    {
+                        let userDict = ["avatar": url,
+                            "facebook_id": id,
+                            "name": name]
+                        
+                        let ref = Firebase(url:firebaseURL + "/users/" + id)
+                        ref.setValue(userDict)
+                        
+                        NSUserDefaults.standardUserDefaults().setObject(id, forKey: "id")
+                        NSUserDefaults.standardUserDefaults().setObject(name, forKey: "name")
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                        
+                    }
+                }
+            }
+            
             var channelNumber = 1
             2
             let ref = Firebase(url:"https://catalysttv.firebaseio.com/users")

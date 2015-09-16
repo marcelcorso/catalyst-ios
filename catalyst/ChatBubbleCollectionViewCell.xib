@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ChatBubbleCollectionViewCell" customModule="Catalyst" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="404" height="280"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="404" height="280"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chatgrey" translatesAutoresizingMaskIntoConstraints="NO" id="0CR-uC-tYN">
+                        <rect key="frame" x="10" y="5" width="384" height="270"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="inn-rB-V2u">
+                        <rect key="frame" x="15" y="15" width="374" height="250"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="0CR-uC-tYN" secondAttribute="bottom" constant="5" id="4UR-iA-qhR"/>
+                <constraint firstAttribute="bottom" secondItem="inn-rB-V2u" secondAttribute="bottom" constant="15" id="4fV-Mi-z4Q"/>
+                <constraint firstAttribute="trailing" secondItem="0CR-uC-tYN" secondAttribute="trailing" constant="10" id="7sh-nt-ljZ"/>
+                <constraint firstItem="0CR-uC-tYN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="DNK-px-Ujc"/>
+                <constraint firstItem="0CR-uC-tYN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="Nw5-8I-Iyy"/>
+                <constraint firstItem="inn-rB-V2u" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="Tuy-53-sHJ"/>
+                <constraint firstItem="inn-rB-V2u" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="15" id="qJL-sE-IzR"/>
+                <constraint firstAttribute="trailing" secondItem="inn-rB-V2u" secondAttribute="trailing" constant="15" id="whV-Ua-iYT"/>
+            </constraints>
+            <size key="customSize" width="404" height="280"/>
+            <connections>
+                <outlet property="chatBubble" destination="0CR-uC-tYN" id="bhg-bt-F2V"/>
+                <outlet property="leadingConstraint" destination="Nw5-8I-Iyy" id="dqH-JM-JDC"/>
+                <outlet property="pickupLine" destination="inn-rB-V2u" id="RhW-xy-TcK"/>
+                <outlet property="trailingConstraint" destination="7sh-nt-ljZ" id="ZKL-4h-Lbf"/>
+            </connections>
+            <point key="canvasLocation" x="193" y="302"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="chatgrey" width="106" height="87"/>
+    </resources>
+</document>
