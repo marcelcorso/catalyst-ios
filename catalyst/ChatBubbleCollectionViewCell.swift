@@ -28,15 +28,20 @@ class ChatBubbleCollectionViewCell: UICollectionViewCell {
         switch style {
         case .Me:
             chatBubble.image = UIImage(named: "chatgrey")
+            pickupLine.backgroundColor = UIColor.grayColor()
             leadingConstraint.constant = 400
         case .OtherPerson:
             chatBubble.image = UIImage(named: "chatlove")
+            pickupLine.backgroundColor = UIColor.redColor()
             trailingConstraint.constant = 400
         }
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        
+        
+        pickupLine.backgroundColor = UIColor.grayColor()
         
         leadingConstraint.constant = constraintMargin
         trailingConstraint.constant = constraintMargin
