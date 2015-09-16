@@ -25,7 +25,8 @@ class MatchesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let ref = Firebase(url: "https://catalysttv.firebaseio.com/users/\(userId!)/matches/")
+        let userId = NSUserDefaults.standardUserDefaults().objectForKey("id") as! String
+        let ref = Firebase(url: "https://catalysttv.firebaseio.com/users/\(userId)/matches/")
         
         ref.observeEventType(.ChildAdded, withBlock: { (snapshot: FDataSnapshot!) in
             
