@@ -9,12 +9,16 @@
 import UIKit
 import Firebase
 import FBSDKLoginKit
+import SDWebImage
 
 class UserAuthViewController: UIViewController {
     
-    @IBOutlet weak var codeEntryTextField: UITextField!
-    
+    @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var connectButton: UIButton!
+    @IBOutlet weak var pairView: UIView!
+    @IBOutlet weak var codeEntryTextField: UITextField!
+    @IBOutlet weak var userProfilePicture: UIImageView!
+    @IBOutlet weak var userNameLabel: UILabel!
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nil)
     }
@@ -27,6 +31,43 @@ class UserAuthViewController: UIViewController {
         super.viewDidLoad()
         
         edgesForExtendedLayout = UIRectEdge.None
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
+        
+        connectButton.layer.cornerRadius = 8.0
+        connectButton.layer.borderColor = UIColor.darkGrayColor().CGColor
+        connectButton.layer.borderWidth = 1.0
+        
+        userProfilePicture.layer.cornerRadius = userProfilePicture.bounds.height / 2
+        userProfilePicture.layer.masksToBounds = true
+        
+        let myName = NSUserDefaults.standardUserDefaults().objectForKey("name") as! String
+        userNameLabel.text = myName
+        
+        let myId = NSUserDefaults.standardUserDefaults().objectForKey("id") as! String
+        let ref = Firebase(url:"https://catalysttv.firebaseio.com/users/\(myId)")
+        
+        ref.observeEventType(.Value, withBlock: { snapshot in
+            if let person = snapshot.value {
+                
+                let url = person.objectForKey("avatar") as! String
+                SDWebImageManager.sharedManager().downloadImageWithURL(NSURL(string: url), options: nil, progress: nil) { (image, error, imageCacheType, finished, url) -> Void in
+                    
+                    if image != nil {
+                        self.userProfilePicture.image = image
+                    }
+                }
+            }
+        })
+    }
+    
+    func keyboardDidShow(notification: NSNotification) {
+        UIView.animateWithDuration(0.2, animations: { () -> Void in
+            self.pairView.frame.origin = CGPoint(x: self.pairView.frame.origin.x, y: 100)
+            self.userNameLabel.alpha = 0
+            self.userProfilePicture.alpha = 0
+            self.messageLabel.alpha = 0
+        })
     }
 
     @IBAction func connectButtonTapped(sender: AnyObject) {
