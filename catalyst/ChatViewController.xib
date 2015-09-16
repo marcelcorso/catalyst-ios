@@ -16,8 +16,9 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="t4N-XM-JS0">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nJs-7T-RJt">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="706"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="nJs-7T-RJt">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -28,13 +29,21 @@
                         <outlet property="delegate" destination="-1" id="E7M-la-sQW"/>
                     </connections>
                 </collectionView>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NA1-C8-e9W">
+                    <rect key="frame" x="0.0" y="706" width="414" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="t4N-XM-JS0" secondAttribute="trailing" id="6Rs-Z4-Kgl"/>
                 <constraint firstItem="t4N-XM-JS0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ArP-7u-E91"/>
                 <constraint firstItem="t4N-XM-JS0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="K38-ew-zT2"/>
-                <constraint firstAttribute="bottom" secondItem="t4N-XM-JS0" secondAttribute="bottom" id="y2g-Mg-eUE"/>
+                <constraint firstAttribute="trailing" secondItem="NA1-C8-e9W" secondAttribute="trailing" id="KeJ-2S-J7w"/>
+                <constraint firstItem="t4N-XM-JS0" firstAttribute="bottom" secondItem="NA1-C8-e9W" secondAttribute="top" id="NrD-4s-Wh3"/>
+                <constraint firstItem="NA1-C8-e9W" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hgU-zU-Efh"/>
+                <constraint firstAttribute="bottom" secondItem="NA1-C8-e9W" secondAttribute="bottom" id="zwd-Op-o0L"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
         </view>

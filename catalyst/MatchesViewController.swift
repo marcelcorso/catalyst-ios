@@ -15,6 +15,7 @@ class MatchesViewController: UIViewController {
     var matches: [[String : AnyObject]] = [[String : AnyObject]]()
     
     @IBOutlet weak var tableView: UITableView!
+    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -52,6 +53,25 @@ class MatchesViewController: UIViewController {
         matchRef.observeEventType(.Value, withBlock: { matchSnapshot in
             if let match = matchSnapshot.value as? [String : AnyObject] {
                 self.matches.append(match)
+                
+                var encountered = [[String : AnyObject]]()
+                for match in self.matches {
+                    let id = match["facebook_id"] as! String
+                    
+                    var found = Bool()
+                    for encounteredPerson in encountered {
+                        if encounteredPerson["facebook_id"] as! String == id {
+                            found = true
+                        } else {
+                            found = false
+                        }
+                    }
+                    if !found {
+                        encountered.append(match)
+                    }
+                }
+                self.matches = encountered
+                
                 self.tableView.reloadData()
             }
         })
@@ -76,7 +96,7 @@ extension MatchesViewController : UITableViewDataSource {
         let match = matches[indexPath.item]
         
         if let name = match["name"] as? String {
-        cell.nameLabel.text = name
+            cell.nameLabel.text = name
         }
         
         if let urlString = match["avatar"] as? String,
@@ -90,10 +110,24 @@ extension MatchesViewController : UITableViewDataSource {
                 }
         }
         
-        
         return cell
     }
+}
+
+extension MatchesViewController : UITableViewDelegate {
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let match = matches[indexPath.item]
+        
+        let chatVC = ChatViewController(nibName: "ChatViewController", bundle: nil)
+        
+        if let fbid = match["facebook_id"] as? String {
+            
+            chatVC.otherUserId = fbid
+            navigationController?.pushViewController(chatVC, animated: true)
+        }
+    }
 }
 
 
