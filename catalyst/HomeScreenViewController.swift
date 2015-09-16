@@ -182,6 +182,24 @@ class HomeScreenViewController: UIViewController, UIGestureRecognizerDelegate {
                                         if let person = snapshot.value as? [String: AnyObject] {
                                             self.people.append(person)
                                         }
+                                        var encountered = [[String : AnyObject]]()
+                                        for person in self.people {
+                                            let id = person["facebook_id"] as! String
+                                            
+                                            var found = Bool()
+                                            for encounteredPerson in encountered {
+                                                if encounteredPerson["facebook_id"] as! String == id {
+                                                    found = true
+                                                } else {
+                                                    found = false
+                                                }
+                                            }
+                                            if !found {
+                                                encountered.append(person)
+                                            }
+                                        }
+                                        self.people = encountered
+                                        
                                         self.collectionView.reloadData()
                                     })
                                 }
