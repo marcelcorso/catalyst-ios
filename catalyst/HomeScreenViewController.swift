@@ -265,6 +265,7 @@ extension HomeScreenViewController : UICollectionViewDataSource  {
             ref1.observeEventType(.Value, withBlock: { snapshot in
                 if let title = snapshot.value as? String {
                     header.programTitleLabel.text = title
+                    header.setNeedsLayout()
                 }
             })
             
@@ -273,9 +274,12 @@ extension HomeScreenViewController : UICollectionViewDataSource  {
             ref2.observeEventType(.Value, withBlock: { snapshot in
                 if let channel = snapshot.value as? String {
                     header.channelTitleLabel.text = "channel " + channel
+                    header.setNeedsLayout()
                 }
             })
         }
+        
+        
         
         return header
     }
