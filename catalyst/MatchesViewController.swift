@@ -30,15 +30,7 @@ class MatchesViewController: UIViewController {
         ref.observeEventType(.ChildAdded, withBlock: { (snapshot: FDataSnapshot!) in
             
             var matchUserID: String = snapshot.value as! String
-            
-            let matchRef = Firebase(url: "https://catalysttv.firebaseio.com/users/\(matchUserID)/")
-            
-            matchRef.observeEventType(.Value, withBlock: { matchSnapshot in
-                
-                
-            
-            })
-            
+            self.processMatchUserID(matchUserID)
         })
         
         tableView.registerNib(UINib(nibName: "MatchTableViewCell", bundle: nil), forCellReuseIdentifier: "MatchTableViewCell")
@@ -49,6 +41,17 @@ class MatchesViewController: UIViewController {
         
         title = "Matches"
         
+    }
+    
+    func processMatchUserID(matchUserID: String) {
+        
+        let matchRef = Firebase(url: "https://catalysttv.firebaseio.com/users/\(matchUserID)/")
+        
+        matchRef.observeEventType(.Value, withBlock: { matchSnapshot in
+            if let match = matchSnapshot.value as? [String : AnyObject] {
+                self.matches.append(match)
+            }
+        })
     }
     
     func dismissMe(sender: UIBarButtonItem) {
