@@ -33,7 +33,44 @@ class HomeScreenViewController: UIViewController, UIGestureRecognizerDelegate {
         
         NSNotificationCenter.defaultCenter().addObserverForName(matchNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (notification: NSNotification!) -> Void in
             
-            // TODO: Corné : Firebase code for a match
+            let myId = NSUserDefaults.standardUserDefaults().objectForKey("id") as! String
+            let myRef = Firebase(url:"https://catalysttv.firebaseio.com/users/\(myId)/")
+                
+            let likedPersonId = notification.object!["facebook_id"] as! String
+            let likedPersonRef = Firebase(url:"https://catalysttv.firebaseio.com/users/\(likedPersonId)/")
+            
+            // add like to my profile
+            let myLikesRef = myRef.childByAppendingPath("likes")
+            let likeRef = myLikesRef.childByAutoId()
+            likeRef.setValue(likedPersonId)
+            
+            let likedPersonsLikesRef = likedPersonRef.childByAppendingPath("likes")
+            likedPersonsLikesRef.queryOrderedByValue().observeEventType(.ChildAdded, withBlock: { snapshot in
+                if snapshot.value as! String == myId {
+                    println("yay, match!")
+                    
+                    // set match on me
+                    let myMatchesRef = myRef.childByAppendingPath("matches")
+                    let myMatchRef = myMatchesRef.childByAutoId()
+                    myMatchRef.setValue(likedPersonId)
+                    
+                    // set match on liked person
+                    let likedPersonsMatchesRef = likedPersonRef.childByAppendingPath("matches")
+                    let likedPersonsMatchRef = likedPersonsMatchesRef.childByAutoId()
+                    likedPersonsMatchRef.setValue(myId)
+                    
+                    // set notification
+                    let likedPersonsName = notification.object!["name"] as! String
+                    let myNotificationsRef = myRef.childByAppendingPath("notifications")
+                    let myNotificationRef = myNotificationsRef.childByAutoId()
+                    myNotificationsRef.setValue("Wow, \(likedPersonsName) likes you too!")
+                    
+                    let myName = NSUserDefaults.standardUserDefaults().objectForKey("name") as! String
+                    let likedPersonsNotificationsRef = likedPersonRef.childByAppendingPath("notifications")
+                    let likedPersonsNotificationRef = likedPersonsNotificationsRef.childByAutoId()
+                    likedPersonsNotificationRef.setValue("Wow, \(myName) likes you too!")
+                }
+            })
         }
         
         
@@ -115,7 +152,7 @@ class HomeScreenViewController: UIViewController, UIGestureRecognizerDelegate {
         } else {
             
             var channelNumber = 1
-            
+            2
             let ref = Firebase(url:"https://catalysttv.firebaseio.com/users")
             
             var queryRef = ref.queryOrderedByChild("viewing_channel").queryEndingAtValue(channelNumber)!.queryStartingAtValue(channelNumber)
@@ -153,12 +190,12 @@ extension HomeScreenViewController : UICollectionViewDataSource  {
         if let urlString = person["avatar"] as? String,
             url = NSURL(string: urlString) {
                 
-                SDWebImageManager.sharedManager().downloadImageWithURL(url, options: nil, progress: nil) { (image, error, imageCacheType, finished, url) -> Void in
-                    
-                    if image != nil {
-                    cell.userImageView.image = image
-                    }
+            SDWebImageManager.sharedManager().downloadImageWithURL(url, options: nil, progress: nil) { (image, error, imageCacheType, finished, url) -> Void in
+                
+                if image != nil {
+                cell.userImageView.image = image
                 }
+            }
         }        
         return cell
     }

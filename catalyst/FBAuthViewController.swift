@@ -52,6 +52,7 @@ class FBAuthViewController: UIViewController, FBSDKLoginButtonDelegate {
                         ref.setValue(userDict)
                         
                         NSUserDefaults.standardUserDefaults().setObject(id, forKey: "id")
+                        NSUserDefaults.standardUserDefaults().setObject(name, forKey: "name")
                         self.dismissViewControllerAnimated(true, completion: nil)
                         
                     }
