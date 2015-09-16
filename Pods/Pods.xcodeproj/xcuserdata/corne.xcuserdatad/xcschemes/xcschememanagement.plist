@@ -4,34 +4,69 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Bolts.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+		<key>FBSDKCoreKit.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
+		<key>FBSDKLoginKit.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
 		<key>Pods-Bolts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>Pods-FBSDKCoreKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 		<key>Pods-FBSDKLoginKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>Pods-SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>29399BCB804F2E0687B2ABCB1670A745</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>4A464B966465779A3919AD66</key>
 		<dict>
 			<key>primary</key>
@@ -42,7 +77,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>649FB8F03CBA0BBA5D7EA340DCCD7198</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>6BCC3019B8B29115251D23D2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9666688CB41B38A9914616144C9C7A3E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -52,7 +97,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>B367C674E416E58DD74F4004F6DB971F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>BEFEC33F316A4D2B9AE10B52</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DAA97B211E84253BAAF41893D2AD8FEE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
