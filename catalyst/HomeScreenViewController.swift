@@ -91,8 +91,6 @@ class HomeScreenViewController: UIViewController, UIGestureRecognizerDelegate {
         let chatButton = UIBarButtonItem(image: UIImage(named: "msg"), style: .Plain, target: self, action: "matchesButtonTouched:")
         chatButton.tintColor = UIColor.blackColor()
         navigationItem.rightBarButtonItem = chatButton
-        
-        checkUserAuth()
     }
     
     func settingsButtonTouched(sender: UIBarButtonItem) {
@@ -142,6 +140,8 @@ class HomeScreenViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        checkUserAuth()
     }
     
     func checkUserAuth() {
@@ -192,9 +192,12 @@ class HomeScreenViewController: UIViewController, UIGestureRecognizerDelegate {
                         NSUserDefaults.standardUserDefaults().setObject(name, forKey: "name")
                         self.dismissViewControllerAnimated(false, completion: nil)
                         
+                        let code = NSUserDefaults.standardUserDefaults().objectForKey("userCode")
                         
-                        let userAuthViewController = UserAuthViewController(nibName: "UserAuthViewController", bundle: nil)
-                        self.presentViewController(userAuthViewController, animated: false, completion: nil)
+                        if code == nil {
+                            let userAuthViewController = UserAuthViewController(nibName: "UserAuthViewController", bundle: nil)
+                            self.presentViewController(userAuthViewController, animated: false, completion: nil)
+                        }
                         
                     }
                 }

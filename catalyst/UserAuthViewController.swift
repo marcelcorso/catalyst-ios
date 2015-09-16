@@ -73,6 +73,7 @@ class UserAuthViewController: UIViewController {
     @IBAction func connectButtonTapped(sender: AnyObject) {
         let id = NSUserDefaults.standardUserDefaults().objectForKey("id") as! String
         
+        NSUserDefaults.standardUserDefaults().setObject(codeEntryTextField.text , forKey: "userCode")
         
         if let associatedCode = codeEntryTextField.text as? String where count(associatedCode) > 0 {
             
