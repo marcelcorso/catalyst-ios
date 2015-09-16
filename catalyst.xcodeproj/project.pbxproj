@@ -27,6 +27,8 @@
 		E5A9D9541BA838E1002482F1 /* FBAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5A9D9521BA838E1002482F1 /* FBAuthViewController.xib */; };
 		E5D7349E1BA9575100CED053 /* MatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D7349D1BA9575100CED053 /* MatchTableViewCell.swift */; };
 		E5D734A01BA9576100CED053 /* MatchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5D7349F1BA9576100CED053 /* MatchTableViewCell.xib */; };
+		E5D734A71BA965D300CED053 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D734A51BA965D300CED053 /* ChatViewController.swift */; };
+		E5D734A81BA965D300CED053 /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5D734A61BA965D300CED053 /* ChatViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,8 @@
 		E5A9D9521BA838E1002482F1 /* FBAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FBAuthViewController.xib; path = catalyst/FBAuthViewController.xib; sourceTree = SOURCE_ROOT; };
 		E5D7349D1BA9575100CED053 /* MatchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatchTableViewCell.swift; path = catalyst/MatchTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		E5D7349F1BA9576100CED053 /* MatchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MatchTableViewCell.xib; path = catalyst/MatchTableViewCell.xib; sourceTree = SOURCE_ROOT; };
+		E5D734A51BA965D300CED053 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = catalyst/ChatViewController.swift; sourceTree = SOURCE_ROOT; };
+		E5D734A61BA965D300CED053 /* ChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChatViewController.xib; path = catalyst/ChatViewController.xib; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,8 @@
 				E584EEF01BA8ACA500325934 /* MatchesViewController.xib */,
 				E5D7349D1BA9575100CED053 /* MatchTableViewCell.swift */,
 				E5D7349F1BA9576100CED053 /* MatchTableViewCell.xib */,
+				E5D734A51BA965D300CED053 /* ChatViewController.swift */,
+				E5D734A61BA965D300CED053 /* ChatViewController.xib */,
 				412E624F1BA825D400346E01 /* Images.xcassets */,
 				412E62511BA825D400346E01 /* LaunchScreen.xib */,
 				412E62471BA825D400346E01 /* Catalyst.xcdatamodeld */,
@@ -226,6 +232,7 @@
 				E5A9D9501BA837EB002482F1 /* HomeScreenViewController.xib in Resources */,
 				E5A9D9541BA838E1002482F1 /* FBAuthViewController.xib in Resources */,
 				412E4A171BA828D40044F752 /* UserAuthViewController.xib in Resources */,
+				E5D734A81BA965D300CED053 /* ChatViewController.xib in Resources */,
 				412E62501BA825D400346E01 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,6 +294,7 @@
 			files = (
 				E5A9D9531BA838E1002482F1 /* FBAuthViewController.swift in Sources */,
 				412E624B1BA825D400346E01 /* UserAuthViewController.swift in Sources */,
+				E5D734A71BA965D300CED053 /* ChatViewController.swift in Sources */,
 				E584EEF11BA8ACA500325934 /* MatchesViewController.swift in Sources */,
 				E584EEF51BA8B13500325934 /* HomeHeaderView.swift in Sources */,
 				4113FB6E1BA86F8C00FD3FA0 /* HomeScreenCollectionViewCell.swift in Sources */,
