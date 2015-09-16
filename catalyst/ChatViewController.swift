@@ -15,7 +15,8 @@ class ChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-	(collectionView.collectionViewLayout as! UICollectionViewFlowLayout).estimatedItemSize = CGSize(width: 300, height: 300)
+	collectionView.registerNib(UINib(nibName: "ChatBubbleCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ChatBubbleCollectionViewCell")
+
 
         let userId = NSUserDefaults.standardUserDefaults().objectForKey("id") as! String
         let mineUserId =  NSUserDefaults.standardUserDefaults().objectForKey("id") as! String
@@ -71,7 +72,11 @@ extension ChatViewController : UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        return UICollectionViewCell()
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ChatBubbleCollectionViewCell", forIndexPath: indexPath) as! ChatBubbleCollectionViewCell
+        
+        
+        
+        return cell
     }
 
     
