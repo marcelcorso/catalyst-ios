@@ -15,6 +15,7 @@ class MatchesViewController: UIViewController {
     var matches: [[String : AnyObject]] = [[String : AnyObject]]()
     
     @IBOutlet weak var tableView: UITableView!
+    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -76,7 +77,7 @@ extension MatchesViewController : UITableViewDataSource {
         let match = matches[indexPath.item]
         
         if let name = match["name"] as? String {
-        cell.nameLabel.text = name
+            cell.nameLabel.text = name
         }
         
         if let urlString = match["avatar"] as? String,
@@ -90,10 +91,24 @@ extension MatchesViewController : UITableViewDataSource {
                 }
         }
         
-        
         return cell
     }
+}
+
+extension MatchesViewController : UITableViewDelegate {
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let match = matches[indexPath.item]
+        
+        let chatVC = ChatViewController(nibName: "ChatViewController", bundle: nil)
+        
+        if let fbid = match["facebook_id"] as? String {
+            
+            chatVC.otherUserId = fbid
+            navigationController?.pushViewController(chatVC, animated: true)
+        }
+    }
 }
 
 
