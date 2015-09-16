@@ -11,6 +11,7 @@ import Firebase
 
 class ChatViewController: UIViewController {
     
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     var otherUserId: String!
     
     var messages = [[String : String]]()
@@ -27,6 +28,19 @@ class ChatViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserverForName(UIKeyboardDidShowNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (notification: NSNotification!) -> Void in
+    
+
+                let frameValue: NSValue = notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
+                
+                let rect = frameValue.CGRectValue()
+                
+                self.bottomConstraint.constant = rect.height
+            
+                self.collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: self.collectionView.numberOfItemsInSection(0)-1, inSection: 0), atScrollPosition: UICollectionViewScrollPosition.Bottom, animated: true)
+            
+        }
         
         collectionView.registerNib(UINib(nibName: "ChatBubbleCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ChatBubbleCollectionViewCell")
         
@@ -95,8 +109,7 @@ extension ChatViewController : UICollectionViewDataSource {
         let heSaidSheSaid = message["message"]
         cell.pickupLine.text = heSaidSheSaid
         cell.setBubbleStyle(.Me)
-        
-        cell.setNeedsUpdateConstraints()
+        let image = cell.chatBubble.image!
         
         return cell
     }
@@ -107,20 +120,8 @@ extension ChatViewController : UICollectionViewDelegateFlowLayout {
 
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
-        let message = messages[indexPath.item] as [String : String]
         
-        let heSaidSheSaid: String = message["message"]!
+        return CGSize(width: CGRectGetWidth(collectionView.bounds), height: 300)
         
-        let topBottomMargins: CGFloat = 30.0
-        let maxWidth: CGFloat = CGRectGetWidth(collectionView.bounds) - 30.0
-        
-        let maxSize = CGSize(width: maxWidth, height: CGFloat.max)
-        
-        let s = heSaidSheSaid as NSString
-        
-        let rect = s.boundingRectWithSize(maxSize, options: NSStringDrawingOptions.UsesDeviceMetrics, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(17)], context: nil)
-        
-        return CGSize(width: CGRectGetWidth(collectionView.bounds), height: CGRectGetHeight(rect) + topBottomMargins)
-      
     }
 }
