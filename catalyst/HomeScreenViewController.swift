@@ -35,7 +35,7 @@ class HomeScreenViewController: UIViewController, UIGestureRecognizerDelegate {
             
             let myId = NSUserDefaults.standardUserDefaults().objectForKey("id") as! String
             let myRef = Firebase(url:"https://catalysttv.firebaseio.com/users/\(myId)/")
-                
+            
             let likedPersonId = notification.object!["facebook_id"] as! String
             let likedPersonRef = Firebase(url:"https://catalysttv.firebaseio.com/users/\(likedPersonId)/")
             
@@ -94,11 +94,47 @@ class HomeScreenViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func settingsButtonTouched(sender: UIBarButtonItem) {
+
+        // TODO: fill this constants for real:
+        let mineUserId = 1
+        let mineUserName = "Pastor Marco Feliciano"
+        let herUserId = 2
+        
+        // sort the ids to get an unique room id
+        var first = mineUserId
+        var second = herUserId
+        if first < second {
+            first = herUserId
+            second = mineUserId
+        }
+        
+        let room = "\(first)_\(second)"
+        
+        let ref = Firebase(url:"https://catalysttv.firebaseio.com/chat/" + room)
+        
+        var queryRef = ref.queryOrderedByKey().queryLimitedToLast(20)
+        
+        queryRef.observeEventType(.ChildAdded, withBlock: { (snapshot: FDataSnapshot!) in
+            let author: AnyObject? = snapshot.value.objectForKey("author_name")
+            let message: AnyObject? = snapshot.value.objectForKey("message")
+            
+            println("\(author): \(message)")
+        })
+        
+        // create a new message:
+        let aNewMessageRef = ref.childByAutoId()
+        let massage = [
+            "author_id": mineUserId,
+            "author_name": mineUserName,
+            "message": "\(arc4random_uniform(7)) John Lennon foi castigado e morto por Deus por ter dito em certa ocasião que 'Os Beatles são mais populares do que Jesus Cristo'"
+        ]
+        aNewMessageRef.setValue(massage)
+
         
     }
     
     func matchesButtonTouched(sender: UIBarButtonItem) {
-    
+        
         self.navigationController?.pushViewController(MatchesViewController(nibName: "MatchesViewController", bundle: nil), animated: true)
     }
     
@@ -128,8 +164,28 @@ class HomeScreenViewController: UIViewController, UIGestureRecognizerDelegate {
                             "facebook_id": id,
                             "name": name]
                         
-                        let ref = Firebase(url:firebaseURL + "/users/" + id)
-                        ref.setValue(userDict)
+                        let userRef = Firebase(url:firebaseURL + "/users/" + id)
+                        userRef.setValue(userDict, withCompletionBlock: { (error: NSError!, firebase: Firebase!) -> Void in
+                            let child = userRef.childByAppendingPath("viewing_channel").observeEventType(.Value, withBlock: { (channelSnapshot: FDataSnapshot!) -> Void in
+                                
+                                if let channelNumber = channelSnapshot.value as? Int {
+                                    
+                                    let potentialMatches = Firebase(url:"https://catalysttv.firebaseio.com/users")
+                                    
+                                    var queryRef = potentialMatches.queryOrderedByChild("viewing_channel").queryEndingAtValue(channelNumber)!.queryStartingAtValue(channelNumber)
+                                    
+                                    self.people.removeAll(keepCapacity: false)
+                                    
+                                    queryRef.observeEventType(.ChildAdded, withBlock: { (snapshot: FDataSnapshot!) in
+                                        
+                                        if let person = snapshot.value as? [String: AnyObject] {
+                                            self.people.append(person)
+                                        }
+                                        self.collectionView.reloadData()
+                                    })
+                                }
+                            })
+                        })
                         
                         NSUserDefaults.standardUserDefaults().setObject(id, forKey: "id")
                         NSUserDefaults.standardUserDefaults().setObject(name, forKey: "name")
@@ -143,26 +199,12 @@ class HomeScreenViewController: UIViewController, UIGestureRecognizerDelegate {
                     }
                 }
             }
-            
-            var channelNumber = 1
-            2
-            let ref = Firebase(url:"https://catalysttv.firebaseio.com/users")
-            
-            var queryRef = ref.queryOrderedByChild("viewing_channel").queryEndingAtValue(channelNumber)!.queryStartingAtValue(channelNumber)
-            
-            queryRef.observeEventType(.ChildAdded, withBlock: { (snapshot: FDataSnapshot!) in
-                
-                if let person = snapshot.value as? [String: AnyObject] {
-                    self.people.append(person)
-                }
-                self.collectionView.reloadData()
-            })
         }
     }
 }
 
 extension HomeScreenViewController : UICollectionViewDelegateFlowLayout {
-
+    
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return CGSize(width: CGRectGetWidth(UIScreen.mainScreen().bounds), height: 260)
     }
@@ -183,13 +225,13 @@ extension HomeScreenViewController : UICollectionViewDataSource  {
         if let urlString = person["avatar"] as? String,
             url = NSURL(string: urlString) {
                 
-            SDWebImageManager.sharedManager().downloadImageWithURL(url, options: nil, progress: nil) { (image, error, imageCacheType, finished, url) -> Void in
-                
-                if image != nil {
-                cell.userImageView.image = image
+                SDWebImageManager.sharedManager().downloadImageWithURL(url, options: nil, progress: nil) { (image, error, imageCacheType, finished, url) -> Void in
+                    
+                    if image != nil {
+                        cell.userImageView.image = image
+                    }
                 }
-            }
-        }        
+        }
         return cell
     }
     
