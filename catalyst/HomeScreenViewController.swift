@@ -166,7 +166,7 @@ class HomeScreenViewController: UIViewController, UIGestureRecognizerDelegate {
                             "name": name]
                         
                         let userRef = Firebase(url:firebaseURL + "/users/" + id)
-                        userRef.setValue(userDict, withCompletionBlock: { (error: NSError!, firebase: Firebase!) -> Void in
+                        userRef.updateChildValues(userDict, withCompletionBlock: { (error: NSError!, firebase: Firebase!) -> Void in
                             let child = userRef.childByAppendingPath("viewing_channel").observeEventType(.Value, withBlock: { (channelSnapshot: FDataSnapshot!) -> Void in
                                 
                                 if let channelNumber = channelSnapshot.value as? Int {
