@@ -17,7 +17,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Program" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="txu-za-SBF">
-                    <rect key="frame" x="5" y="40" width="363" height="20.5"/>
+                    <rect key="frame" x="5" y="31" width="363" height="21"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -34,15 +34,11 @@
                 <constraint firstAttribute="trailing" secondItem="txu-za-SBF" secondAttribute="trailing" constant="5" id="CUx-me-dKX"/>
                 <constraint firstItem="7zx-dl-GIO" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="15" id="DJp-L6-2Wn"/>
                 <constraint firstItem="txu-za-SBF" firstAttribute="top" secondItem="7zx-dl-GIO" secondAttribute="bottom" constant="5" id="Iok-RH-Cdy"/>
-                <constraint firstItem="Tgp-Wg-7mE" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="5" id="iv1-L7-HGJ"/>
-                <constraint firstAttribute="trailing" secondItem="Tgp-Wg-7mE" secondAttribute="trailing" constant="5" id="loe-fE-Fk7"/>
                 <constraint firstItem="7zx-dl-GIO" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="5" id="miN-vx-dg9"/>
                 <constraint firstItem="txu-za-SBF" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="5" id="pnD-mH-yqI"/>
                 <constraint firstAttribute="trailing" secondItem="7zx-dl-GIO" secondAttribute="trailing" constant="5" id="vbj-7g-HVl"/>
-                <constraint firstItem="Tgp-Wg-7mE" firstAttribute="top" secondItem="txu-za-SBF" secondAttribute="bottom" constant="5" id="zXC-eZ-9qg"/>
             </constraints>
             <connections>
-                <outlet property="channelTitleLabel" destination="Tgp-Wg-7mE" id="OqZ-Yc-WoW"/>
                 <outlet property="programTitleLabel" destination="txu-za-SBF" id="i8S-B9-sqG"/>
             </connections>
             <point key="canvasLocation" x="244.5" y="235.5"/>

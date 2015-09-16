@@ -61,12 +61,12 @@ class HomeScreenViewController: UIViewController, UIGestureRecognizerDelegate {
                     
                     // set notification
                     let likedPersonsName = notification.object!["name"] as! String
-                    let myNotificationsRef = myRef.childByAppendingPath("notifications")
+                    let myNotificationsRef = myRef.childByAppendingPath("notification")
                     let myNotificationRef = myNotificationsRef.childByAutoId()
                     myNotificationsRef.setValue("Wow, \(likedPersonsName) likes you too!")
                     
                     let myName = NSUserDefaults.standardUserDefaults().objectForKey("name") as! String
-                    let likedPersonsNotificationsRef = likedPersonRef.childByAppendingPath("notifications")
+                    let likedPersonsNotificationsRef = likedPersonRef.childByAppendingPath("notification")
                     let likedPersonsNotificationRef = likedPersonsNotificationsRef.childByAutoId()
                     likedPersonsNotificationRef.setValue("Wow, \(myName) likes you too!")
                 }
@@ -82,6 +82,7 @@ class HomeScreenViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         
         collectionView.registerNib(UINib(nibName: "HomeScreenCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "collcell")
+        collectionView.registerNib(UINib(nibName: "HomeHeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "header")
         
         navigationItem.titleView = UIImageView(image: UIImage(named: "catalyst_logo"))
         
@@ -140,7 +141,6 @@ class HomeScreenViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
         checkUserAuth()
     }
     
@@ -197,6 +197,7 @@ class HomeScreenViewController: UIViewController, UIGestureRecognizerDelegate {
                         if code == nil {
                             let userAuthViewController = UserAuthViewController(nibName: "UserAuthViewController", bundle: nil)
                             self.presentViewController(userAuthViewController, animated: false, completion: nil)
+                            self.collectionView.reloadData()
                         }
                         
                     }
@@ -238,7 +239,38 @@ extension HomeScreenViewController : UICollectionViewDataSource  {
         return cell
     }
     
+    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        
+        let header = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "header", forIndexPath: indexPath) as! HomeHeaderView
+        
+        let userId = NSUserDefaults.standardUserDefaults().objectForKey("id") as! String
+        var ref1 = Firebase(url:"https://catalysttv.firebaseio.com/users/\(userId)/viewing/now/title")
+        
+        ref1.observeEventType(.Value, withBlock: { snapshot in
+            if let title = snapshot.value as? String {
+                header.programTitleLabel.text = title
+            }
+        })
+        
+        var ref2 = Firebase(url:"https://catalysttv.firebaseio.com/users/\(userId)/viewing_channel/")
+        
+        ref2.observeEventType(.Value, withBlock: { snapshot in
+            if let channel = snapshot.value as? String {
+                header.channelTitleLabel.text = "channel " + channel
+            }
+        })
+        
+        return header
+    }
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return people.count
+    }
+}
+
+extension HomeScreenViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.bounds.size.width, height: 80)
     }
 }
