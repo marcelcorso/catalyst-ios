@@ -50,6 +50,7 @@ class MatchesViewController: UIViewController {
         matchRef.observeEventType(.Value, withBlock: { matchSnapshot in
             if let match = matchSnapshot.value as? [String : AnyObject] {
                 self.matches.append(match)
+                self.tableView.reloadData()
             }
         })
     }
@@ -69,6 +70,8 @@ extension MatchesViewController : UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell = tableView.dequeueReusableCellWithIdentifier("MatchTableViewCell", forIndexPath: indexPath) as! MatchTableViewCell
+        
+        let match = matches[indexPath.item]
         
         return cell
     }

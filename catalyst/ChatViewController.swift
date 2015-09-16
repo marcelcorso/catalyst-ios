@@ -28,7 +28,7 @@ extension ChatViewController : UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        
+        return UICollectionViewCell()
     }
 
     
