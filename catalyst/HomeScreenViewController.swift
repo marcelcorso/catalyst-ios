@@ -61,12 +61,12 @@ class HomeScreenViewController: UIViewController, UIGestureRecognizerDelegate {
                     
                     // set notification
                     let likedPersonsName = notification.object!["name"] as! String
-                    let myNotificationsRef = myRef.childByAppendingPath("notifications")
+                    let myNotificationsRef = myRef.childByAppendingPath("notification")
                     let myNotificationRef = myNotificationsRef.childByAutoId()
                     myNotificationsRef.setValue("Wow, \(likedPersonsName) likes you too!")
                     
                     let myName = NSUserDefaults.standardUserDefaults().objectForKey("name") as! String
-                    let likedPersonsNotificationsRef = likedPersonRef.childByAppendingPath("notifications")
+                    let likedPersonsNotificationsRef = likedPersonRef.childByAppendingPath("notification")
                     let likedPersonsNotificationRef = likedPersonsNotificationsRef.childByAutoId()
                     likedPersonsNotificationRef.setValue("Wow, \(myName) likes you too!")
                 }
