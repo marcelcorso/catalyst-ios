@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SDWebImage
 
 class MatchesViewController: UIViewController {
     
@@ -72,6 +73,22 @@ extension MatchesViewController : UITableViewDataSource {
         var cell = tableView.dequeueReusableCellWithIdentifier("MatchTableViewCell", forIndexPath: indexPath) as! MatchTableViewCell
         
         let match = matches[indexPath.item]
+        
+        if let name = match["name"] as? String {
+        cell.nameLabel.text = name
+        }
+        
+        if let urlString = match["avatar"] as? String,
+            url = NSURL(string: urlString) {
+                
+                SDWebImageManager.sharedManager().downloadImageWithURL(url, options: nil, progress: nil) { (image, error, imageCacheType, finished, url) -> Void in
+                    
+                    if image != nil {
+                        cell.matchImageView.image = image
+                    }
+                }
+        }
+        
         
         return cell
     }
