@@ -30,15 +30,18 @@ class ChatViewController: UIViewController {
         super.viewDidLoad()
         
         NSNotificationCenter.defaultCenter().addObserverForName(UIKeyboardDidShowNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (notification: NSNotification!) -> Void in
-    
-
-                let frameValue: NSValue = notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
-                
-                let rect = frameValue.CGRectValue()
-                
-                self.bottomConstraint.constant = rect.height
             
+            
+            let frameValue: NSValue = notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
+            
+            let rect = frameValue.CGRectValue()
+            
+            self.bottomConstraint.constant = rect.height
+            
+            if self.collectionView.numberOfItemsInSection(0) > 0 {
+                
                 self.collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: self.collectionView.numberOfItemsInSection(0)-1, inSection: 0), atScrollPosition: UICollectionViewScrollPosition.Bottom, animated: true)
+            }
             
         }
         
@@ -108,7 +111,17 @@ extension ChatViewController : UICollectionViewDataSource {
         
         let heSaidSheSaid = message["message"]
         cell.pickupLine.text = heSaidSheSaid
-        cell.setBubbleStyle(.Me)
+        
+        let author = message["author"]
+        
+        let mineName = NSUserDefaults.standardUserDefaults().objectForKey("name") as! String
+        
+        if mineName == author {
+            cell.setBubbleStyle(.Me)
+        }
+        else {
+            cell.setBubbleStyle(.OtherPerson)
+        }
         let image = cell.chatBubble.image!
         
         return cell
@@ -117,7 +130,7 @@ extension ChatViewController : UICollectionViewDataSource {
 }
 
 extension ChatViewController : UICollectionViewDelegateFlowLayout {
-
+    
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
         
@@ -127,24 +140,43 @@ extension ChatViewController : UICollectionViewDelegateFlowLayout {
 }
 
 extension ChatViewController : UITextFieldDelegate {
-
+    
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         
         let message = textField.text
         
-       // let ref = Firebase(url:"https://catalysttv.firebaseio.com/chat/" + room)
+        let mineUserId =  NSUserDefaults.standardUserDefaults().objectForKey("id") as! String
+        let mineUserName = NSUserDefaults.standardUserDefaults().objectForKey("name") as! String
+        // TODO: fill this for real:
+        let herUserId = otherUserId
         
-        // create a new message:
-        /*let aNewMessageRef = ref.childByAutoId()
+        // sort the ids to get an unique room id
+        var first = mineUserId
+        var second = herUserId
+        
+        let firstNSString = first as NSString
+        let secondNSString = second as NSString
+        let result = firstNSString.localizedCaseInsensitiveCompare(second)
+        
+        if result == NSComparisonResult.OrderedAscending {
+            first = herUserId
+            second = mineUserId
+        }
+        
+        let room = "\(first)_\(second)"
+        
+        let ref = Firebase(url:"https://catalysttv.firebaseio.com/chat/" + room)
+        
+        let aNewMessageRef = ref.childByAutoId()
         let massage = [
             "author_id": mineUserId,
             "author_name": mineUserName,
-            "message": "\(arc4random_uniform(7)) John Lennon foi castigado e morto por Deus por ter dito em certa ocasião que 'Os Beatles são mais populares do que Jesus Cristo'"
+            "message": textField.text
         ]
-        //aNewMessageRef.setValue(massage)
-        */
-
+        aNewMessageRef.setValue(massage)
+        
+        
         return true
     }
     

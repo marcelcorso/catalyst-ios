@@ -30,10 +30,12 @@ class ChatBubbleCollectionViewCell: UICollectionViewCell {
             chatBubble.image = UIImage(named: "chatgrey")
             pickupLine.backgroundColor = UIColor.grayColor()
             leadingConstraint.constant = 400
+            pickupLine.textAlignment = NSTextAlignment.Right
         case .OtherPerson:
             chatBubble.image = UIImage(named: "chatlove")
             pickupLine.backgroundColor = UIColor.redColor()
             trailingConstraint.constant = 400
+            pickupLine.textAlignment = NSTextAlignment.Left
         }
     }
     
